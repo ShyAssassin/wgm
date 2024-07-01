@@ -3,6 +3,8 @@ name = "wgm"
 license = "MIT"
 edition = "2021"
 version = "0.0.1"
+repository = "https://github.com/ShyAssassin/wgm"
 description = "a fast and easy to use math library for use with WGPU"
 
 [dependencies]
+bytemuck = "1.16.1"
