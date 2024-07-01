@@ -1,0 +1,8 @@
+[package]
+name = "wgm"
+license = "MIT"
+edition = "2021"
+version = "0.0.1"
+description = "a fast and easy to use math library for use with WGPU"
+
+[dependencies]
