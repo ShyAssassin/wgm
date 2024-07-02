@@ -1,4 +1,5 @@
 mod alias;
+mod features;
 
 mod mat2;
 mod mat3;
