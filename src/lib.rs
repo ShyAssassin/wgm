@@ -9,6 +9,7 @@ mod vec2;
 mod vec3;
 mod vec4;
 
+pub use alias::*;
 pub use mat2::Mat2;
 pub use mat3::Mat3;
 pub use mat4::Mat4;

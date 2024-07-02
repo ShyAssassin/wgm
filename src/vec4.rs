@@ -6,6 +6,7 @@ use std::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
 #[derive(Debug)]
 #[derive(Copy, Clone)]
 #[derive(PartialEq, Eq, Default)]
+/// A 4-dimensional vector of type T.
 pub struct Vec4<T> {
     pub x: T,
     pub y: T,
@@ -14,15 +15,18 @@ pub struct Vec4<T> {
 }
 
 impl<T> Vec4<T> {
+    /// Create a new `Vec4<T>` from the given x, y, z, and w values.
     pub const fn new(x: T, y: T, z: T, w: T) -> Self {
         Self { x, y, z, w }
     }
 
+    /// Create a new `Vec4<T>` with all components set to the same value.
     pub const fn splat(v: T) -> Self
     where T: Copy {
         Self::new(v, v, v, v)
     }
 
+    /// Truncate a `Vec4<T>` into a `Vec3<T>` by dropping the w component.
     pub fn truncate(self) -> Vec3<T> {
         Vec3::new(self.x, self.y, self.z)
     }

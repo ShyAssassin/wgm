@@ -6,25 +6,30 @@ use std::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
 #[derive(Debug)]
 #[derive(Copy, Clone)]
 #[derive(PartialEq, Eq, Default)]
+/// A 2-dimensional vector of type T.
 pub struct Vec2<T> {
     pub x: T,
     pub y: T,
 }
 
 impl<T> Vec2<T> {
+    /// Create a new `Vec2<T>` from the given x and y values.
     pub const fn new(x: T, y: T) -> Self {
         Self { x, y }
     }
 
+    /// Create a new `Vec2<T>` with all components set to the same value.
     pub const fn splat(v: T) -> Self
     where T: Copy {
         Self::new(v, v)
     }
 
+    /// Extend a `Vec2<T>` into a `Vec3<T>` by adding a z component.
     pub fn extend(self, z: T) -> Vec3<T> {
         Vec3::new(self.x, self.y, z)
     }
 
+    /// Truncate a `Vec2<T>` into a scalar by dropping the y component.
     pub fn truncate(self) -> T {
         self.x
     }
