@@ -196,3 +196,31 @@ impl<T> From<(Vec2<T>, T)> for Vec3<T> {
         Self::new(v.x, v.y, t)
     }
 }
+
+// Vec3<T> -> [T; 3]
+impl<T> From<Vec3<T>> for [T; 3] {
+    fn from(v: Vec3<T>) -> Self {
+        [v.x, v.y, v.z]
+    }
+}
+
+// Vec3<T> -> (T, T, T)
+impl<T> From<Vec3<T>> for (T, T, T) {
+    fn from(v: Vec3<T>) -> Self {
+        (v.x, v.y, v.z)
+    }
+}
+
+// Vec3<T> -> (T, Vec2<T>)
+impl<T> From<Vec3<T>> for (T, Vec2<T>) {
+    fn from(v: Vec3<T>) -> Self {
+        (v.x, Vec2::new(v.y, v.z))
+    }
+}
+
+// Vec3<T> -> (Vec2<T>, T)
+impl<T> From<Vec3<T>> for (Vec2<T>, T) {
+    fn from(v: Vec3<T>) -> Self {
+        (Vec2::new(v.x, v.y), v.z)
+    }
+}

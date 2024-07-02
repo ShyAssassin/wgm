@@ -240,3 +240,66 @@ impl<T> From<(Vec2<T>, Vec2<T>)> for Vec4<T> {
         Self::new(v1.x, v1.y, v2.x, v2.y)
     }
 }
+
+// Vec4<T> -> [T; 4]
+impl<T> From<Vec4<T>> for [T; 4] {
+    fn from(v: Vec4<T>) -> Self {
+        [v.x, v.y, v.z, v.w]
+    }
+}
+
+// Vec4<T> -> [Vec2<T>; 2]
+impl<T> From<Vec4<T>> for [Vec2<T>; 2] {
+    fn from(v: Vec4<T>) -> Self {
+        [Vec2::new(v.x, v.y), Vec2::new(v.z, v.w)]
+    }
+}
+
+// Vec4<T> -> (T, T, T, T)
+impl<T> From<Vec4<T>> for (T, T, T, T) {
+    fn from(v: Vec4<T>) -> Self {
+        (v.x, v.y, v.z, v.w)
+    }
+}
+
+// Vec4<T> -> (Vec2<T>, Vec2<T>)
+impl<T> From<Vec4<T>> for (Vec2<T>, Vec2<T>) {
+    fn from(v: Vec4<T>) -> Self {
+        (Vec2::new(v.x, v.y), Vec2::new(v.z, v.w))
+    }
+}
+
+// Vec4<T> -> (T, T, Vec2<T>)
+impl<T> From<Vec4<T>> for (T, T, Vec2<T>) {
+    fn from(v: Vec4<T>) -> Self {
+        (v.x, v.y, Vec2::new(v.z, v.w))
+    }
+}
+
+// Vec4<T> -> (Vec2<T>, T, T)
+impl<T> From<Vec4<T>> for (Vec2<T>, T, T) {
+    fn from(v: Vec4<T>) -> Self {
+        (Vec2::new(v.x, v.y), v.z, v.w)
+    }
+}
+
+// Vec4<T> -> (T, Vec2<T>, T)
+impl<T> From<Vec4<T>> for (T, Vec2<T>, T) {
+    fn from(v: Vec4<T>) -> Self {
+        (v.x, Vec2::new(v.y, v.z), v.w)
+    }
+}
+
+// Vec4<T> -> (Vec3<T>, T)
+impl<T> From<Vec4<T>> for (Vec3<T>, T) {
+    fn from(v: Vec4<T>) -> Self {
+        (Vec3::new(v.x, v.y, v.z), v.w)
+    }
+}
+
+// Vec4<T> -> (T, Vec3<T>)
+impl<T> From<Vec4<T>> for (T, Vec3<T>) {
+    fn from(v: Vec4<T>) -> Self {
+        (v.x, Vec3::new(v.y, v.z, v.w))
+    }
+}

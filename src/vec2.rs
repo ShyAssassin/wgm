@@ -172,3 +172,17 @@ impl<T> From<(T, T)> for Vec2<T> {
         Self::new(x, y)
     }
 }
+
+// Vec2<T> -> [T; 2]
+impl<T> From<Vec2<T>> for [T; 2] {
+    fn from(v: Vec2<T>) -> Self {
+        [v.x, v.y]
+    }
+}
+
+// Vec2<T> -> (T, T)
+impl<T> From<Vec2<T>> for (T, T) {
+    fn from(v: Vec2<T>) -> Self {
+        (v.x, v.y)
+    }
+}
