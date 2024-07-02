@@ -151,3 +151,24 @@ impl<T: Copy + Sub<Output = T>> SubAssign for Vec2<T> {
         self.y = self.y - rhs.y;
     }
 }
+
+// T -> Vec2<T>
+impl<T: Copy> From<T> for Vec2<T>{
+    fn from(v: T) -> Self {
+        Self::new(v, v)
+    }
+}
+
+// [T; 2] -> Vec2<T>
+impl<T> From<[T; 2]> for Vec2<T> {
+    fn from([x, y]: [T; 2]) -> Self {
+        Self::new(x, y)
+    }
+}
+
+// (T, T) -> Vec2<T>
+impl<T> From<(T, T)> for Vec2<T> {
+    fn from((x, y): (T, T)) -> Self {
+        Self::new(x, y)
+    }
+}

@@ -1,3 +1,4 @@
+use super::Vec2;
 use std::ops::{Add, Sub, Mul, Div};
 use std::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
 
@@ -158,5 +159,40 @@ impl<T: Copy + Sub<Output = T>> SubAssign<Vec3<T>> for Vec3<T> {
         self.x = self.x - rhs.x;
         self.y = self.y - rhs.y;
         self.z = self.z - rhs.z;
+    }
+}
+
+// T -> Vec3<T>
+impl<T: Copy> From<T> for Vec3<T>{
+    fn from(v: T) -> Self {
+        Self::new(v, v, v)
+    }
+}
+
+// [T; 3] -> Vec3<T>
+impl<T> From<[T; 3]> for Vec3<T> {
+    fn from([x, y, z]: [T; 3]) -> Self {
+        Self::new(x, y, z)
+    }
+}
+
+// (T, T, T) -> Vec3<T>
+impl<T> From<(T, T, T)> for Vec3<T> {
+    fn from((x, y, z): (T, T, T)) -> Self {
+        Self::new(x, y, z)
+    }
+}
+
+// (T, Vec2<T>) -> Vec3<T>
+impl<T> From<(T, Vec2<T>)> for Vec3<T> {
+    fn from((t, v): (T, Vec2<T>)) -> Self {
+        Self::new(t, v.x, v.y)
+    }
+}
+
+// (Vec2<T>, T) -> Vec3<T>
+impl<T> From<(Vec2<T>, T)> for Vec3<T> {
+    fn from((v, t): (Vec2<T>, T)) -> Self {
+        Self::new(v.x, v.y, t)
     }
 }
