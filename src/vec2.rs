@@ -1,3 +1,4 @@
+use super::Vec3;
 use std::ops::{Add, Sub, Mul, Div};
 use std::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
 
@@ -13,6 +14,19 @@ pub struct Vec2<T> {
 impl<T> Vec2<T> {
     pub const fn new(x: T, y: T) -> Self {
         Self { x, y }
+    }
+
+    pub const fn splat(v: T) -> Self
+    where T: Copy {
+        Self::new(v, v)
+    }
+
+    pub fn extend(self, z: T) -> Vec3<T> {
+        Vec3::new(self.x, self.y, z)
+    }
+
+    pub fn truncate(self) -> T {
+        self.x
     }
 }
 

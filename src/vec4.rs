@@ -17,6 +17,15 @@ impl<T> Vec4<T> {
     pub const fn new(x: T, y: T, z: T, w: T) -> Self {
         Self { x, y, z, w }
     }
+
+    pub const fn splat(v: T) -> Self
+    where T: Copy {
+        Self::new(v, v, v, v)
+    }
+
+    pub fn truncate(self) -> Vec3<T> {
+        Vec3::new(self.x, self.y, self.z)
+    }
 }
 
 // Vec4<T> * T
