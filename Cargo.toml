@@ -2,12 +2,17 @@
 name = "wgm"
 license = "MIT"
 edition = "2021"
-version = "0.0.2"
+version = "0.0.3"
 repository = "https://github.com/ShyAssassin/wgm"
 categories = ["mathematics", "game-development"]
 keywords = ["gamedev", "math", "vector", "matrix"]
 description = "A fast and simple math library for game and graphics development"
 
+[features]
+default = ["rand", "bytemuck"]
+bytemuck = ["dep:bytemuck"]
+rand = ["dep:rand"]
+
 [dependencies]
-rand = {version = "0.8.5", default-features = false}
-bytemuck = {version = "1.16.1", default-features = false}
+rand = {version = "0.8.5", default-features = false, optional = true}
+bytemuck = {version = "1.16.1", default-features = false, optional = true}
