@@ -1,5 +1,20 @@
 use super::{Vec2, Vec3, Vec4};
 
+/// Create a new `Vec2<T>` from the given x and y values.
+pub const fn vec2<T>(x: T, y: T) -> Vec2<T> {
+    Vec2::new(x, y)
+}
+
+/// Create a new `Vec3<T>` from the given x, y, and z values.
+pub const fn vec3<T>(x: T, y: T, z: T) -> Vec3<T> {
+    Vec3::new(x, y, z)
+}
+
+/// Create a new `Vec4<T>` from the given x, y, z, and w values.
+pub const fn vec4<T>(x: T, y: T, z: T, w: T) -> Vec4<T> {
+    Vec4::new(x, y, z, w)
+}
+
 /// Alias for `Vec2<f32>`.
 pub type Vec2f32 = Vec2<f32>;
 /// Alias for `Vec2<f64>`.

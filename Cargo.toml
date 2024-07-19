@@ -16,3 +16,7 @@ rand = ["dep:rand"]
 [dependencies]
 rand = {version = "0.8.5", default-features = false, optional = true}
 bytemuck = {version = "1.16.1", default-features = false, optional = true}
+
+[lints.clippy]
+needless_return = "allow"
+redundant_field_names = "allow"
