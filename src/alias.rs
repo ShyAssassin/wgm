@@ -1,3 +1,4 @@
+// TODO: Figure out if aliases are a good idea or not.
 use super::{Vec2, Vec3, Vec4};
 
 /// Create a new `Vec2<T>` from the given x and y values.
