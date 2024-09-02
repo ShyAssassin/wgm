@@ -28,6 +28,7 @@ def generate_swizzle_methods(components):
 def generate_vec_impl(components):
     methods = generate_swizzle_methods(components)
     impl = f"""
+#[doc(hidden)]
 impl<T: Copy> Vec{len(components)}<T> {{
     {'    '.join(methods)}
 }}

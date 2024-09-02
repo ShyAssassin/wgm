@@ -1,5 +1,6 @@
 use crate::{Vec2, Vec3, Vec4};
 
+#[doc(hidden)]
 impl<T: Copy> Vec2<T> {
     pub fn x(&self) -> T {
         return self.x
@@ -122,6 +123,7 @@ impl<T: Copy> Vec2<T> {
     }
 }
 
+#[doc(hidden)]
 impl<T: Copy> Vec3<T> {
     pub fn x(&self) -> T {
         return self.x
@@ -604,6 +606,7 @@ impl<T: Copy> Vec3<T> {
     }
 }
 
+#[doc(hidden)]
 impl<T: Copy> Vec4<T> {
     pub fn x(&self) -> T {
         return self.x
