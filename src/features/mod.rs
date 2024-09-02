@@ -7,3 +7,5 @@ mod rand;
 #[cfg(feature = "serde")]
 mod serde;
 
+#[cfg(feature = "swizzle")]
+mod swizzle;
