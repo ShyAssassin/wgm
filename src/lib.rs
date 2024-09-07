@@ -1,5 +1,6 @@
 mod features;
 pub mod alias;
+pub mod units;
 
 mod mat2;
 mod mat3;

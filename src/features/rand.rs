@@ -1,6 +1,8 @@
+use num_traits::Float;
+use rand::distributions::{Distribution, Standard};
 use crate::{Vec2, Vec3, Vec4};
 use crate::{Mat2, Mat3, Mat4};
-use rand::distributions::{Distribution, Standard};
+use crate::units::{Deg, Rad, Tau};
 
 impl<T> Distribution<Vec2<T>> for Standard
 where Standard: Distribution<T> {
@@ -41,5 +43,26 @@ impl<T> Distribution<Mat4<T>> for Standard
 where Standard: Distribution<T> {
     fn sample<R: rand::Rng + ?Sized>(&self, rng: &mut R) -> Mat4<T> {
         Mat4::new(rng.gen::<Vec4<T>>(), rng.gen::<Vec4<T>>(), rng.gen::<Vec4<T>>(), rng.gen::<Vec4<T>>())
+    }
+}
+
+impl<T: Float> Distribution<Deg<T>> for Standard
+where Standard: Distribution<T> {
+    fn sample<R: rand::Rng + ?Sized>(&self, rng: &mut R) -> Deg<T> {
+        Deg::new(rng.gen())
+    }
+}
+
+impl<T: Float> Distribution<Rad<T>> for Standard
+where Standard: Distribution<T> {
+    fn sample<R: rand::Rng + ?Sized>(&self, rng: &mut R) -> Rad<T> {
+        Rad::new(rng.gen())
+    }
+}
+
+impl<T: Float> Distribution<Tau<T>> for Standard
+where Standard: Distribution<T> {
+    fn sample<R: rand::Rng + ?Sized>(&self, rng: &mut R) -> Tau<T> {
+        Tau::new(rng.gen())
     }
 }
