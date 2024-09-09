@@ -7,6 +7,7 @@ use std::ops::{MulAssign, DivAssign, AddAssign, SubAssign};
 #[derive(Debug)]
 #[derive(Copy, Clone)]
 #[derive(PartialEq, Eq, Default)]
+/// A angle in degrees.
 pub struct Deg<T: Float>(T);
 
 impl<T: Float> Deg<T> {
@@ -20,18 +21,22 @@ impl<T: Float> Deg<T> {
         return self.0;
     }
 
+    /// Convert a `Rad<T>` to a `Deg<T>`.
     pub fn from_rad(rad: Rad<T>) -> Self {
         return Self::new(rad.inner().to_degrees());
     }
 
+    /// Convert a `Deg<T>` to a `Rad<T>`.
     pub fn to_rad(self) -> Rad<T> {
         return Rad::new(self.inner().to_radians());
     }
 
+    /// Convert a `Tau<T>` to a `Deg<T>`.
     pub fn from_tau(tau: Tau<T>) -> Self {
         return Self::new(tau.inner() * T::from(360).unwrap());
     }
 
+    /// Convert a `Deg<T>` to a `Tau<T>`.
     pub fn to_tau(self) -> Tau<T> {
         return Tau::new(self.inner() / T::from(360).unwrap());
     }

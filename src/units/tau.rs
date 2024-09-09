@@ -8,6 +8,7 @@ use std::ops::{MulAssign, DivAssign, AddAssign, SubAssign};
 #[derive(Debug)]
 #[derive(Copy, Clone)]
 #[derive(PartialEq, Eq, Default)]
+/// A angle in terms of full rotations.
 pub struct Tau<T: Float>(T);
 
 impl<T: Float> Tau<T> {
@@ -21,18 +22,22 @@ impl<T: Float> Tau<T> {
         return self.0;
     }
 
+    /// Convert a `Deg<T>` to a `Tau<T>`.
     pub fn from_deg(deg: Deg<T>) -> Self {
         return Self::new(deg.inner() / T::from(360).unwrap());
     }
 
+    /// Convert a `Tau<T>` to a `Deg<T>`.
     pub fn to_deg(self) -> Deg<T> {
         return Deg::new(self.inner() * T::from(360).unwrap());
     }
 
+    /// Convert a `Rad<T>` to a `Tau<T>`.
     pub fn from_rad(rad: Rad<T>) -> Self {
         return Self::new(rad.inner() / T::from(2.0 * PI).unwrap());
     }
 
+    /// Convert a `Tau<T>` to a `Rad<T>`.
     pub fn to_rad(self) -> Rad<T> {
         return Rad::new(self.inner() * T::from(2.0 * PI).unwrap());
     }

@@ -1,5 +1,6 @@
 mod features;
 pub mod alias;
+/// units for representing angles and other quantities
 pub mod units;
 
 mod mat2;
