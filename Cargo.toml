@@ -2,7 +2,7 @@
 name = "wgm"
 license = "MIT"
 edition = "2021"
-version = "0.0.6"
+version = "0.0.7"
 repository = "https://github.com/ShyAssassin/wgm"
 categories = ["mathematics", "game-development"]
 keywords = ["gamedev", "math", "vector", "matrix"]
@@ -25,8 +25,8 @@ bytemuck = {version = "1.16.3", default-features = false, optional = true}
 needless_return = "allow"
 redundant_field_names = "allow"
 
-# [dev-dependencies]
-# rand = "0.8.5"
-# serde_json = "1.0.127"
-# wgm = { path = ".", features = ["rand", "serde"] }
-# serde = { version = "1.0.207", features = ["derive"] }
+[dev-dependencies]
+rand = { version = "0.8.5" }
+serde_json = { version = "1.0.127" }
+serde = { version = "1.0.207", features = ["derive"] }
+wgm = { path = ".", features = ["rand", "serde", "swizzle"] }
