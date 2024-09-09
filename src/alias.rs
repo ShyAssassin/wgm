@@ -7,27 +7,27 @@ pub const fn vec2<T>(x: T, y: T) -> Vec2<T> {
     return Vec2::new(x, y)
 }
 
-/// Create a new `Vec3<T>` from the given x, y, and z values.
+/// Create a new `Vec3<T>::new()` from the given x, y, and z values.
 pub const fn vec3<T>(x: T, y: T, z: T) -> Vec3<T> {
     return Vec3::new(x, y, z)
 }
 
-/// Create a new `Vec4<T>` from the given x, y, z, and w values.
+/// Create a new `Vec4<T>::new()` from the given x, y, z, and w values.
 pub const fn vec4<T>(x: T, y: T, z: T, w: T) -> Vec4<T> {
     return Vec4::new(x, y, z, w)
 }
 
-/// Alias for `Mat2<T>`. Create a new `Mat2<T>` from the given x and y vectors.
+/// Alias for `Mat2<T>::new()`. Create a new `Mat2<T>` from the given x and y vectors.
 pub const fn mat2x2<T>(x: Vec2<T>, y: Vec2<T>) -> Mat2<T> {
     return Mat2::new(x, y)
 }
 
-/// Alias for `Mat3<T>`. Create a new `Mat3<T>` from the given x, y, and z vectors.
+/// Alias for `Mat3<T>::new()`. Create a new `Mat3<T>` from the given x, y, and z vectors.
 pub const fn mat3x3<T>(x: Vec3<T>, y: Vec3<T>, z: Vec3<T>) -> Mat3<T> {
     return Mat3::new(x, y, z)
 }
 
-/// Alias for `Mat4<T>`. Create a new `Mat4<T>` from the given x, y, z, and w vectors.
+/// Alias for `Mat4<T>::new()`. Create a new `Mat4<T>` from the given x, y, z, and w vectors.
 pub const fn mat4x4<T>(x: Vec4<T>, y: Vec4<T>, z: Vec4<T>, w: Vec4<T>) -> Mat4<T> {
     return Mat4::new(x, y, z, w)
 }
