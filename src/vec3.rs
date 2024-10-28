@@ -1,3 +1,4 @@
+use num_traits::Float;
 use super::{Vec2, Vec4};
 use std::ops::{Add, Sub, Mul, Div};
 use std::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
@@ -14,25 +15,53 @@ pub struct Vec3<T> {
 }
 
 impl<T> Vec3<T> {
-    /// Create a new `Vec3<T>` from x, y, and z.
+    /// Create a new `Vec2<T>` from the given x, y and z values.
     pub const fn new(x: T, y: T, z: T) -> Self {
-        Self { x, y, z }
+        return Self { x, y, z }
     }
 
     /// Create a new `Vec3<T>` with all elements set to the same value.
     pub const fn splat(v: T) -> Self
     where T: Copy {
-        Self::new(v, v, v)
+        return Self::new(v, v, v)
     }
 
     /// Extend a `Vec3<T>` into a `Vec4<T>` by adding a w component.
     pub fn extend(self, w: T) -> Vec4<T> {
-        Vec4::new(self.x, self.y, self.z, w)
+        return Vec4::new(self.x, self.y, self.z, w)
     }
 
     /// Truncate a `Vec3<T>` into a `Vec2<T>` by dropping the z component.
     pub fn truncate(self) -> Vec2<T> {
-        Vec2::new(self.x, self.y)
+        return Vec2::new(self.x, self.y)
+    }
+
+    /// Return the length of the vector.
+    pub fn length(self) -> T
+    where T: Float + Mul<Output = T> + Add<Output = T> {
+        return (self.x * self.x + self.y * self.y + self.z * self.z).sqrt()
+    }
+
+    /// Normalize the vector.
+    pub fn normalize(self) -> Self
+    where T: Float + Div<Output = T> {
+        return self / self.length();
+    }
+
+    /// Compute the dot product of `self` and `rhs`.
+    pub fn dot(self, rhs: Vec3<T>) -> T
+    where T: Mul<Output = T> + Add<Output = T> {
+        return (self.x * rhs.x) + (self.y * rhs.y) + (self.z * rhs.z)
+    }
+
+    /// Compute the cross product of `self` and `rhs`.
+    pub fn cross(self, rhs: Vec3<T>) -> Vec3<T>
+    where T: Copy + Mul<Output = T> + Sub<Output = T> {
+        return Self {
+            x: (self.y * rhs.z) - (self.z * rhs.y),
+            y: (self.z * rhs.x) - (self.x * rhs.z),
+            z: (self.x * rhs.y) - (self.y * rhs.x),
+        }
     }
 }
 

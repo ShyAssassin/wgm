@@ -1,3 +1,4 @@
+use num_traits::Float;
 use super::{Vec2, Vec3};
 use std::ops::{Add, Sub, Mul, Div};
 use std::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
@@ -17,18 +18,36 @@ pub struct Vec4<T> {
 impl<T> Vec4<T> {
     /// Create a new `Vec4<T>` from the given x, y, z, and w values.
     pub const fn new(x: T, y: T, z: T, w: T) -> Self {
-        Self { x, y, z, w }
+        return Self { x, y, z, w }
     }
 
     /// Create a new `Vec4<T>` with all components set to the same value.
     pub const fn splat(v: T) -> Self
     where T: Copy {
-        Self::new(v, v, v, v)
+        return Self::new(v, v, v, v)
     }
 
     /// Truncate a `Vec4<T>` into a `Vec3<T>` by dropping the w component.
     pub fn truncate(self) -> Vec3<T> {
-        Vec3::new(self.x, self.y, self.z)
+        return Vec3::new(self.x, self.y, self.z)
+    }
+
+    /// Return the length of the vector.
+    pub fn length(self) -> T
+    where T: Float + Mul<Output = T> + Add<Output = T> {
+        return (self.x * self.x + self.y * self.y + self.z * self.z + self.w * self.w).sqrt()
+    }
+
+    /// Normalize the vector.
+    pub fn normalize(self) -> Self
+    where T: Float + Div<Output = T> {
+        return self / self.length();
+    }
+
+    /// Compute the dot product of `self` and `rhs`.
+    pub fn dot(self, rhs: Vec4<T>) -> T
+    where T: Mul<Output = T> + Add<Output = T> {
+        return (self.x * rhs.x) + (self.y * rhs.y) + (self.z * rhs.z) + (self.w * rhs.w)
     }
 }
 

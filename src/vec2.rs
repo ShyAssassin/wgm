@@ -1,4 +1,5 @@
 use super::Vec3;
+use num_traits::Float;
 use std::ops::{Add, Sub, Mul, Div};
 use std::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
 
@@ -15,23 +16,41 @@ pub struct Vec2<T> {
 impl<T> Vec2<T> {
     /// Create a new `Vec2<T>` from the given x and y values.
     pub const fn new(x: T, y: T) -> Self {
-        Self { x, y }
+        return Self { x, y }
     }
 
     /// Create a new `Vec2<T>` with all components set to the same value.
     pub const fn splat(v: T) -> Self
     where T: Copy {
-        Self::new(v, v)
+        return Self::new(v, v)
     }
 
     /// Extend a `Vec2<T>` into a `Vec3<T>` by adding a z component.
     pub fn extend(self, z: T) -> Vec3<T> {
-        Vec3::new(self.x, self.y, z)
+        return Vec3::new(self.x, self.y, z)
     }
 
     /// Truncate a `Vec2<T>` into a scalar by dropping the y component.
     pub fn truncate(self) -> T {
-        self.x
+        return self.x
+    }
+
+    /// Return the length of the vector.
+    pub fn length(self) -> T
+    where T: Float + Mul<Output = T> + Add<Output = T> {
+        return (self.x * self.x + self.y * self.y).sqrt()
+    }
+
+    /// Normalize the vector.
+    pub fn normalize(self) -> Self
+    where T: Float + Div<Output = T> {
+        return self / self.length();
+    }
+
+    /// Compute the dot product of `self` and `rhs`.
+    pub fn dot(self, rhs: Vec2<T>) -> T
+    where T: Mul<Output = T> + Add<Output = T> {
+        return (self.x * rhs.x) + (self.y * rhs.y)
     }
 }
 
