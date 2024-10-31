@@ -40,12 +40,16 @@ pub type Vec2f64 = Vec2<f64>;
 pub type Vec2i8 = Vec2<i8>;
 /// Alias for `Vec2<i16>`.
 pub type Vec2i16 = Vec2<i16>;
+/// Alias for `Vec2<i16>`.
+pub type Vec2i32 = Vec2<i32>;
 /// Alias for `Vec2<i64>`.
 pub type Vec2i64 = Vec2<i64>;
 /// Alias for `Vec2<u8>`.
 pub type Vec2u8 = Vec2<u8>;
 /// Alias for `Vec2<u16>`.
 pub type Vec2u16 = Vec2<u16>;
+/// Alias for `Vec2<u16>`.
+pub type Vec2u32 = Vec2<u32>;
 /// Alias for `Vec2<u64>`.
 pub type Vec2u64 = Vec2<u64>;
 
