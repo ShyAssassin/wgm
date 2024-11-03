@@ -4,123 +4,123 @@ use crate::{Vec2, Vec3, Vec4};
 #[doc(hidden)]
 impl<T: Copy> Vec2<T> {
     pub const fn x(&self) -> T {
-        return self.x
+        return self.x;
     }
 
     pub const fn y(&self) -> T {
-        return self.y
+        return self.y;
     }
 
     pub const fn xx(&self) -> Vec2<T> {
-        return Vec2::new(self.x, self.x)
+        return Vec2::new(self.x, self.x);
     }
 
     pub const fn xy(&self) -> Vec2<T> {
-        return Vec2::new(self.x, self.y)
+        return Vec2::new(self.x, self.y);
     }
 
     pub const fn yx(&self) -> Vec2<T> {
-        return Vec2::new(self.y, self.x)
+        return Vec2::new(self.y, self.x);
     }
 
     pub const fn yy(&self) -> Vec2<T> {
-        return Vec2::new(self.y, self.y)
+        return Vec2::new(self.y, self.y);
     }
 
     pub const fn xxx(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.x, self.x)
+        return Vec3::new(self.x, self.x, self.x);
     }
 
     pub const fn xxy(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.x, self.y)
+        return Vec3::new(self.x, self.x, self.y);
     }
 
     pub const fn xyx(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.y, self.x)
+        return Vec3::new(self.x, self.y, self.x);
     }
 
     pub const fn xyy(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.y, self.y)
+        return Vec3::new(self.x, self.y, self.y);
     }
 
     pub const fn yxx(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.x, self.x)
+        return Vec3::new(self.y, self.x, self.x);
     }
 
     pub const fn yxy(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.x, self.y)
+        return Vec3::new(self.y, self.x, self.y);
     }
 
     pub const fn yyx(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.y, self.x)
+        return Vec3::new(self.y, self.y, self.x);
     }
 
     pub const fn yyy(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.y, self.y)
+        return Vec3::new(self.y, self.y, self.y);
     }
 
     pub const fn xxxx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.x, self.x)
+        return Vec4::new(self.x, self.x, self.x, self.x);
     }
 
     pub const fn xxxy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.x, self.y)
+        return Vec4::new(self.x, self.x, self.x, self.y);
     }
 
     pub const fn xxyx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.y, self.x)
+        return Vec4::new(self.x, self.x, self.y, self.x);
     }
 
     pub const fn xxyy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.y, self.y)
+        return Vec4::new(self.x, self.x, self.y, self.y);
     }
 
     pub const fn xyxx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.x, self.x)
+        return Vec4::new(self.x, self.y, self.x, self.x);
     }
 
     pub const fn xyxy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.x, self.y)
+        return Vec4::new(self.x, self.y, self.x, self.y);
     }
 
     pub const fn xyyx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.y, self.x)
+        return Vec4::new(self.x, self.y, self.y, self.x);
     }
 
     pub const fn xyyy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.y, self.y)
+        return Vec4::new(self.x, self.y, self.y, self.y);
     }
 
     pub const fn yxxx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.x, self.x)
+        return Vec4::new(self.y, self.x, self.x, self.x);
     }
 
     pub const fn yxxy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.x, self.y)
+        return Vec4::new(self.y, self.x, self.x, self.y);
     }
 
     pub const fn yxyx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.y, self.x)
+        return Vec4::new(self.y, self.x, self.y, self.x);
     }
 
     pub const fn yxyy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.y, self.y)
+        return Vec4::new(self.y, self.x, self.y, self.y);
     }
 
     pub const fn yyxx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.x, self.x)
+        return Vec4::new(self.y, self.y, self.x, self.x);
     }
 
     pub const fn yyxy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.x, self.y)
+        return Vec4::new(self.y, self.y, self.x, self.y);
     }
 
     pub const fn yyyx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.y, self.x)
+        return Vec4::new(self.y, self.y, self.y, self.x);
     }
 
     pub const fn yyyy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.y, self.y)
+        return Vec4::new(self.y, self.y, self.y, self.y);
     }
 }
 
@@ -128,483 +128,483 @@ impl<T: Copy> Vec2<T> {
 #[doc(hidden)]
 impl<T: Copy> Vec3<T> {
     pub const fn x(&self) -> T {
-        return self.x
+        return self.x;
     }
 
     pub const fn y(&self) -> T {
-        return self.y
+        return self.y;
     }
 
     pub const fn z(&self) -> T {
-        return self.z
+        return self.z;
     }
 
     pub const fn xx(&self) -> Vec2<T> {
-        return Vec2::new(self.x, self.x)
+        return Vec2::new(self.x, self.x);
     }
 
     pub const fn xy(&self) -> Vec2<T> {
-        return Vec2::new(self.x, self.y)
+        return Vec2::new(self.x, self.y);
     }
 
     pub const fn xz(&self) -> Vec2<T> {
-        return Vec2::new(self.x, self.z)
+        return Vec2::new(self.x, self.z);
     }
 
     pub const fn yx(&self) -> Vec2<T> {
-        return Vec2::new(self.y, self.x)
+        return Vec2::new(self.y, self.x);
     }
 
     pub const fn yy(&self) -> Vec2<T> {
-        return Vec2::new(self.y, self.y)
+        return Vec2::new(self.y, self.y);
     }
 
     pub const fn yz(&self) -> Vec2<T> {
-        return Vec2::new(self.y, self.z)
+        return Vec2::new(self.y, self.z);
     }
 
     pub const fn zx(&self) -> Vec2<T> {
-        return Vec2::new(self.z, self.x)
+        return Vec2::new(self.z, self.x);
     }
 
     pub const fn zy(&self) -> Vec2<T> {
-        return Vec2::new(self.z, self.y)
+        return Vec2::new(self.z, self.y);
     }
 
     pub const fn zz(&self) -> Vec2<T> {
-        return Vec2::new(self.z, self.z)
+        return Vec2::new(self.z, self.z);
     }
 
     pub const fn xxx(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.x, self.x)
+        return Vec3::new(self.x, self.x, self.x);
     }
 
     pub const fn xxy(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.x, self.y)
+        return Vec3::new(self.x, self.x, self.y);
     }
 
     pub const fn xxz(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.x, self.z)
+        return Vec3::new(self.x, self.x, self.z);
     }
 
     pub const fn xyx(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.y, self.x)
+        return Vec3::new(self.x, self.y, self.x);
     }
 
     pub const fn xyy(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.y, self.y)
+        return Vec3::new(self.x, self.y, self.y);
     }
 
     pub const fn xyz(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.y, self.z)
+        return Vec3::new(self.x, self.y, self.z);
     }
 
     pub const fn xzx(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.z, self.x)
+        return Vec3::new(self.x, self.z, self.x);
     }
 
     pub const fn xzy(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.z, self.y)
+        return Vec3::new(self.x, self.z, self.y);
     }
 
     pub const fn xzz(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.z, self.z)
+        return Vec3::new(self.x, self.z, self.z);
     }
 
     pub const fn yxx(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.x, self.x)
+        return Vec3::new(self.y, self.x, self.x);
     }
 
     pub const fn yxy(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.x, self.y)
+        return Vec3::new(self.y, self.x, self.y);
     }
 
     pub const fn yxz(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.x, self.z)
+        return Vec3::new(self.y, self.x, self.z);
     }
 
     pub const fn yyx(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.y, self.x)
+        return Vec3::new(self.y, self.y, self.x);
     }
 
     pub const fn yyy(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.y, self.y)
+        return Vec3::new(self.y, self.y, self.y);
     }
 
     pub const fn yyz(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.y, self.z)
+        return Vec3::new(self.y, self.y, self.z);
     }
 
     pub const fn yzx(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.z, self.x)
+        return Vec3::new(self.y, self.z, self.x);
     }
 
     pub const fn yzy(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.z, self.y)
+        return Vec3::new(self.y, self.z, self.y);
     }
 
     pub const fn yzz(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.z, self.z)
+        return Vec3::new(self.y, self.z, self.z);
     }
 
     pub const fn zxx(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.x, self.x)
+        return Vec3::new(self.z, self.x, self.x);
     }
 
     pub const fn zxy(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.x, self.y)
+        return Vec3::new(self.z, self.x, self.y);
     }
 
     pub const fn zxz(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.x, self.z)
+        return Vec3::new(self.z, self.x, self.z);
     }
 
     pub const fn zyx(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.y, self.x)
+        return Vec3::new(self.z, self.y, self.x);
     }
 
     pub const fn zyy(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.y, self.y)
+        return Vec3::new(self.z, self.y, self.y);
     }
 
     pub const fn zyz(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.y, self.z)
+        return Vec3::new(self.z, self.y, self.z);
     }
 
     pub const fn zzx(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.z, self.x)
+        return Vec3::new(self.z, self.z, self.x);
     }
 
     pub const fn zzy(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.z, self.y)
+        return Vec3::new(self.z, self.z, self.y);
     }
 
     pub const fn zzz(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.z, self.z)
+        return Vec3::new(self.z, self.z, self.z);
     }
 
     pub const fn xxxx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.x, self.x)
+        return Vec4::new(self.x, self.x, self.x, self.x);
     }
 
     pub const fn xxxy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.x, self.y)
+        return Vec4::new(self.x, self.x, self.x, self.y);
     }
 
     pub const fn xxxz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.x, self.z)
+        return Vec4::new(self.x, self.x, self.x, self.z);
     }
 
     pub const fn xxyx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.y, self.x)
+        return Vec4::new(self.x, self.x, self.y, self.x);
     }
 
     pub const fn xxyy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.y, self.y)
+        return Vec4::new(self.x, self.x, self.y, self.y);
     }
 
     pub const fn xxyz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.y, self.z)
+        return Vec4::new(self.x, self.x, self.y, self.z);
     }
 
     pub const fn xxzx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.z, self.x)
+        return Vec4::new(self.x, self.x, self.z, self.x);
     }
 
     pub const fn xxzy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.z, self.y)
+        return Vec4::new(self.x, self.x, self.z, self.y);
     }
 
     pub const fn xxzz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.z, self.z)
+        return Vec4::new(self.x, self.x, self.z, self.z);
     }
 
     pub const fn xyxx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.x, self.x)
+        return Vec4::new(self.x, self.y, self.x, self.x);
     }
 
     pub const fn xyxy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.x, self.y)
+        return Vec4::new(self.x, self.y, self.x, self.y);
     }
 
     pub const fn xyxz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.x, self.z)
+        return Vec4::new(self.x, self.y, self.x, self.z);
     }
 
     pub const fn xyyx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.y, self.x)
+        return Vec4::new(self.x, self.y, self.y, self.x);
     }
 
     pub const fn xyyy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.y, self.y)
+        return Vec4::new(self.x, self.y, self.y, self.y);
     }
 
     pub const fn xyyz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.y, self.z)
+        return Vec4::new(self.x, self.y, self.y, self.z);
     }
 
     pub const fn xyzx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.z, self.x)
+        return Vec4::new(self.x, self.y, self.z, self.x);
     }
 
     pub const fn xyzy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.z, self.y)
+        return Vec4::new(self.x, self.y, self.z, self.y);
     }
 
     pub const fn xyzz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.z, self.z)
+        return Vec4::new(self.x, self.y, self.z, self.z);
     }
 
     pub const fn xzxx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.x, self.x)
+        return Vec4::new(self.x, self.z, self.x, self.x);
     }
 
     pub const fn xzxy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.x, self.y)
+        return Vec4::new(self.x, self.z, self.x, self.y);
     }
 
     pub const fn xzxz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.x, self.z)
+        return Vec4::new(self.x, self.z, self.x, self.z);
     }
 
     pub const fn xzyx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.y, self.x)
+        return Vec4::new(self.x, self.z, self.y, self.x);
     }
 
     pub const fn xzyy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.y, self.y)
+        return Vec4::new(self.x, self.z, self.y, self.y);
     }
 
     pub const fn xzyz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.y, self.z)
+        return Vec4::new(self.x, self.z, self.y, self.z);
     }
 
     pub const fn xzzx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.z, self.x)
+        return Vec4::new(self.x, self.z, self.z, self.x);
     }
 
     pub const fn xzzy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.z, self.y)
+        return Vec4::new(self.x, self.z, self.z, self.y);
     }
 
     pub const fn xzzz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.z, self.z)
+        return Vec4::new(self.x, self.z, self.z, self.z);
     }
 
     pub const fn yxxx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.x, self.x)
+        return Vec4::new(self.y, self.x, self.x, self.x);
     }
 
     pub const fn yxxy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.x, self.y)
+        return Vec4::new(self.y, self.x, self.x, self.y);
     }
 
     pub const fn yxxz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.x, self.z)
+        return Vec4::new(self.y, self.x, self.x, self.z);
     }
 
     pub const fn yxyx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.y, self.x)
+        return Vec4::new(self.y, self.x, self.y, self.x);
     }
 
     pub const fn yxyy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.y, self.y)
+        return Vec4::new(self.y, self.x, self.y, self.y);
     }
 
     pub const fn yxyz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.y, self.z)
+        return Vec4::new(self.y, self.x, self.y, self.z);
     }
 
     pub const fn yxzx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.z, self.x)
+        return Vec4::new(self.y, self.x, self.z, self.x);
     }
 
     pub const fn yxzy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.z, self.y)
+        return Vec4::new(self.y, self.x, self.z, self.y);
     }
 
     pub const fn yxzz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.z, self.z)
+        return Vec4::new(self.y, self.x, self.z, self.z);
     }
 
     pub const fn yyxx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.x, self.x)
+        return Vec4::new(self.y, self.y, self.x, self.x);
     }
 
     pub const fn yyxy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.x, self.y)
+        return Vec4::new(self.y, self.y, self.x, self.y);
     }
 
     pub const fn yyxz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.x, self.z)
+        return Vec4::new(self.y, self.y, self.x, self.z);
     }
 
     pub const fn yyyx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.y, self.x)
+        return Vec4::new(self.y, self.y, self.y, self.x);
     }
 
     pub const fn yyyy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.y, self.y)
+        return Vec4::new(self.y, self.y, self.y, self.y);
     }
 
     pub const fn yyyz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.y, self.z)
+        return Vec4::new(self.y, self.y, self.y, self.z);
     }
 
     pub const fn yyzx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.z, self.x)
+        return Vec4::new(self.y, self.y, self.z, self.x);
     }
 
     pub const fn yyzy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.z, self.y)
+        return Vec4::new(self.y, self.y, self.z, self.y);
     }
 
     pub const fn yyzz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.z, self.z)
+        return Vec4::new(self.y, self.y, self.z, self.z);
     }
 
     pub const fn yzxx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.x, self.x)
+        return Vec4::new(self.y, self.z, self.x, self.x);
     }
 
     pub const fn yzxy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.x, self.y)
+        return Vec4::new(self.y, self.z, self.x, self.y);
     }
 
     pub const fn yzxz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.x, self.z)
+        return Vec4::new(self.y, self.z, self.x, self.z);
     }
 
     pub const fn yzyx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.y, self.x)
+        return Vec4::new(self.y, self.z, self.y, self.x);
     }
 
     pub const fn yzyy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.y, self.y)
+        return Vec4::new(self.y, self.z, self.y, self.y);
     }
 
     pub const fn yzyz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.y, self.z)
+        return Vec4::new(self.y, self.z, self.y, self.z);
     }
 
     pub const fn yzzx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.z, self.x)
+        return Vec4::new(self.y, self.z, self.z, self.x);
     }
 
     pub const fn yzzy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.z, self.y)
+        return Vec4::new(self.y, self.z, self.z, self.y);
     }
 
     pub const fn yzzz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.z, self.z)
+        return Vec4::new(self.y, self.z, self.z, self.z);
     }
 
     pub const fn zxxx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.x, self.x)
+        return Vec4::new(self.z, self.x, self.x, self.x);
     }
 
     pub const fn zxxy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.x, self.y)
+        return Vec4::new(self.z, self.x, self.x, self.y);
     }
 
     pub const fn zxxz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.x, self.z)
+        return Vec4::new(self.z, self.x, self.x, self.z);
     }
 
     pub const fn zxyx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.y, self.x)
+        return Vec4::new(self.z, self.x, self.y, self.x);
     }
 
     pub const fn zxyy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.y, self.y)
+        return Vec4::new(self.z, self.x, self.y, self.y);
     }
 
     pub const fn zxyz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.y, self.z)
+        return Vec4::new(self.z, self.x, self.y, self.z);
     }
 
     pub const fn zxzx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.z, self.x)
+        return Vec4::new(self.z, self.x, self.z, self.x);
     }
 
     pub const fn zxzy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.z, self.y)
+        return Vec4::new(self.z, self.x, self.z, self.y);
     }
 
     pub const fn zxzz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.z, self.z)
+        return Vec4::new(self.z, self.x, self.z, self.z);
     }
 
     pub const fn zyxx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.x, self.x)
+        return Vec4::new(self.z, self.y, self.x, self.x);
     }
 
     pub const fn zyxy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.x, self.y)
+        return Vec4::new(self.z, self.y, self.x, self.y);
     }
 
     pub const fn zyxz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.x, self.z)
+        return Vec4::new(self.z, self.y, self.x, self.z);
     }
 
     pub const fn zyyx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.y, self.x)
+        return Vec4::new(self.z, self.y, self.y, self.x);
     }
 
     pub const fn zyyy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.y, self.y)
+        return Vec4::new(self.z, self.y, self.y, self.y);
     }
 
     pub const fn zyyz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.y, self.z)
+        return Vec4::new(self.z, self.y, self.y, self.z);
     }
 
     pub const fn zyzx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.z, self.x)
+        return Vec4::new(self.z, self.y, self.z, self.x);
     }
 
     pub const fn zyzy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.z, self.y)
+        return Vec4::new(self.z, self.y, self.z, self.y);
     }
 
     pub const fn zyzz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.z, self.z)
+        return Vec4::new(self.z, self.y, self.z, self.z);
     }
 
     pub const fn zzxx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.x, self.x)
+        return Vec4::new(self.z, self.z, self.x, self.x);
     }
 
     pub const fn zzxy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.x, self.y)
+        return Vec4::new(self.z, self.z, self.x, self.y);
     }
 
     pub const fn zzxz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.x, self.z)
+        return Vec4::new(self.z, self.z, self.x, self.z);
     }
 
     pub const fn zzyx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.y, self.x)
+        return Vec4::new(self.z, self.z, self.y, self.x);
     }
 
     pub const fn zzyy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.y, self.y)
+        return Vec4::new(self.z, self.z, self.y, self.y);
     }
 
     pub const fn zzyz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.y, self.z)
+        return Vec4::new(self.z, self.z, self.y, self.z);
     }
 
     pub const fn zzzx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.z, self.x)
+        return Vec4::new(self.z, self.z, self.z, self.x);
     }
 
     pub const fn zzzy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.z, self.y)
+        return Vec4::new(self.z, self.z, self.z, self.y);
     }
 
     pub const fn zzzz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.z, self.z)
+        return Vec4::new(self.z, self.z, self.z, self.z);
     }
 }
 
@@ -612,1363 +612,1362 @@ impl<T: Copy> Vec3<T> {
 #[doc(hidden)]
 impl<T: Copy> Vec4<T> {
     pub const fn x(&self) -> T {
-        return self.x
+        return self.x;
     }
 
     pub const fn y(&self) -> T {
-        return self.y
+        return self.y;
     }
 
     pub const fn z(&self) -> T {
-        return self.z
+        return self.z;
     }
 
     pub const fn w(&self) -> T {
-        return self.w
+        return self.w;
     }
 
     pub const fn xx(&self) -> Vec2<T> {
-        return Vec2::new(self.x, self.x)
+        return Vec2::new(self.x, self.x);
     }
 
     pub const fn xy(&self) -> Vec2<T> {
-        return Vec2::new(self.x, self.y)
+        return Vec2::new(self.x, self.y);
     }
 
     pub const fn xz(&self) -> Vec2<T> {
-        return Vec2::new(self.x, self.z)
+        return Vec2::new(self.x, self.z);
     }
 
     pub const fn xw(&self) -> Vec2<T> {
-        return Vec2::new(self.x, self.w)
+        return Vec2::new(self.x, self.w);
     }
 
     pub const fn yx(&self) -> Vec2<T> {
-        return Vec2::new(self.y, self.x)
+        return Vec2::new(self.y, self.x);
     }
 
     pub const fn yy(&self) -> Vec2<T> {
-        return Vec2::new(self.y, self.y)
+        return Vec2::new(self.y, self.y);
     }
 
     pub const fn yz(&self) -> Vec2<T> {
-        return Vec2::new(self.y, self.z)
+        return Vec2::new(self.y, self.z);
     }
 
     pub const fn yw(&self) -> Vec2<T> {
-        return Vec2::new(self.y, self.w)
+        return Vec2::new(self.y, self.w);
     }
 
     pub const fn zx(&self) -> Vec2<T> {
-        return Vec2::new(self.z, self.x)
+        return Vec2::new(self.z, self.x);
     }
 
     pub const fn zy(&self) -> Vec2<T> {
-        return Vec2::new(self.z, self.y)
+        return Vec2::new(self.z, self.y);
     }
 
     pub const fn zz(&self) -> Vec2<T> {
-        return Vec2::new(self.z, self.z)
+        return Vec2::new(self.z, self.z);
     }
 
     pub const fn zw(&self) -> Vec2<T> {
-        return Vec2::new(self.z, self.w)
+        return Vec2::new(self.z, self.w);
     }
 
     pub const fn wx(&self) -> Vec2<T> {
-        return Vec2::new(self.w, self.x)
+        return Vec2::new(self.w, self.x);
     }
 
     pub const fn wy(&self) -> Vec2<T> {
-        return Vec2::new(self.w, self.y)
+        return Vec2::new(self.w, self.y);
     }
 
     pub const fn wz(&self) -> Vec2<T> {
-        return Vec2::new(self.w, self.z)
+        return Vec2::new(self.w, self.z);
     }
 
     pub const fn ww(&self) -> Vec2<T> {
-        return Vec2::new(self.w, self.w)
+        return Vec2::new(self.w, self.w);
     }
 
     pub const fn xxx(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.x, self.x)
+        return Vec3::new(self.x, self.x, self.x);
     }
 
     pub const fn xxy(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.x, self.y)
+        return Vec3::new(self.x, self.x, self.y);
     }
 
     pub const fn xxz(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.x, self.z)
+        return Vec3::new(self.x, self.x, self.z);
     }
 
     pub const fn xxw(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.x, self.w)
+        return Vec3::new(self.x, self.x, self.w);
     }
 
     pub const fn xyx(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.y, self.x)
+        return Vec3::new(self.x, self.y, self.x);
     }
 
     pub const fn xyy(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.y, self.y)
+        return Vec3::new(self.x, self.y, self.y);
     }
 
     pub const fn xyz(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.y, self.z)
+        return Vec3::new(self.x, self.y, self.z);
     }
 
     pub const fn xyw(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.y, self.w)
+        return Vec3::new(self.x, self.y, self.w);
     }
 
     pub const fn xzx(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.z, self.x)
+        return Vec3::new(self.x, self.z, self.x);
     }
 
     pub const fn xzy(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.z, self.y)
+        return Vec3::new(self.x, self.z, self.y);
     }
 
     pub const fn xzz(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.z, self.z)
+        return Vec3::new(self.x, self.z, self.z);
     }
 
     pub const fn xzw(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.z, self.w)
+        return Vec3::new(self.x, self.z, self.w);
     }
 
     pub const fn xwx(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.w, self.x)
+        return Vec3::new(self.x, self.w, self.x);
     }
 
     pub const fn xwy(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.w, self.y)
+        return Vec3::new(self.x, self.w, self.y);
     }
 
     pub const fn xwz(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.w, self.z)
+        return Vec3::new(self.x, self.w, self.z);
     }
 
     pub const fn xww(&self) -> Vec3<T> {
-        return Vec3::new(self.x, self.w, self.w)
+        return Vec3::new(self.x, self.w, self.w);
     }
 
     pub const fn yxx(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.x, self.x)
+        return Vec3::new(self.y, self.x, self.x);
     }
 
     pub const fn yxy(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.x, self.y)
+        return Vec3::new(self.y, self.x, self.y);
     }
 
     pub const fn yxz(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.x, self.z)
+        return Vec3::new(self.y, self.x, self.z);
     }
 
     pub const fn yxw(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.x, self.w)
+        return Vec3::new(self.y, self.x, self.w);
     }
 
     pub const fn yyx(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.y, self.x)
+        return Vec3::new(self.y, self.y, self.x);
     }
 
     pub const fn yyy(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.y, self.y)
+        return Vec3::new(self.y, self.y, self.y);
     }
 
     pub const fn yyz(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.y, self.z)
+        return Vec3::new(self.y, self.y, self.z);
     }
 
     pub const fn yyw(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.y, self.w)
+        return Vec3::new(self.y, self.y, self.w);
     }
 
     pub const fn yzx(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.z, self.x)
+        return Vec3::new(self.y, self.z, self.x);
     }
 
     pub const fn yzy(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.z, self.y)
+        return Vec3::new(self.y, self.z, self.y);
     }
 
     pub const fn yzz(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.z, self.z)
+        return Vec3::new(self.y, self.z, self.z);
     }
 
     pub const fn yzw(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.z, self.w)
+        return Vec3::new(self.y, self.z, self.w);
     }
 
     pub const fn ywx(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.w, self.x)
+        return Vec3::new(self.y, self.w, self.x);
     }
 
     pub const fn ywy(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.w, self.y)
+        return Vec3::new(self.y, self.w, self.y);
     }
 
     pub const fn ywz(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.w, self.z)
+        return Vec3::new(self.y, self.w, self.z);
     }
 
     pub const fn yww(&self) -> Vec3<T> {
-        return Vec3::new(self.y, self.w, self.w)
+        return Vec3::new(self.y, self.w, self.w);
     }
 
     pub const fn zxx(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.x, self.x)
+        return Vec3::new(self.z, self.x, self.x);
     }
 
     pub const fn zxy(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.x, self.y)
+        return Vec3::new(self.z, self.x, self.y);
     }
 
     pub const fn zxz(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.x, self.z)
+        return Vec3::new(self.z, self.x, self.z);
     }
 
     pub const fn zxw(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.x, self.w)
+        return Vec3::new(self.z, self.x, self.w);
     }
 
     pub const fn zyx(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.y, self.x)
+        return Vec3::new(self.z, self.y, self.x);
     }
 
     pub const fn zyy(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.y, self.y)
+        return Vec3::new(self.z, self.y, self.y);
     }
 
     pub const fn zyz(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.y, self.z)
+        return Vec3::new(self.z, self.y, self.z);
     }
 
     pub const fn zyw(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.y, self.w)
+        return Vec3::new(self.z, self.y, self.w);
     }
 
     pub const fn zzx(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.z, self.x)
+        return Vec3::new(self.z, self.z, self.x);
     }
 
     pub const fn zzy(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.z, self.y)
+        return Vec3::new(self.z, self.z, self.y);
     }
 
     pub const fn zzz(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.z, self.z)
+        return Vec3::new(self.z, self.z, self.z);
     }
 
     pub const fn zzw(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.z, self.w)
+        return Vec3::new(self.z, self.z, self.w);
     }
 
     pub const fn zwx(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.w, self.x)
+        return Vec3::new(self.z, self.w, self.x);
     }
 
     pub const fn zwy(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.w, self.y)
+        return Vec3::new(self.z, self.w, self.y);
     }
 
     pub const fn zwz(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.w, self.z)
+        return Vec3::new(self.z, self.w, self.z);
     }
 
     pub const fn zww(&self) -> Vec3<T> {
-        return Vec3::new(self.z, self.w, self.w)
+        return Vec3::new(self.z, self.w, self.w);
     }
 
     pub const fn wxx(&self) -> Vec3<T> {
-        return Vec3::new(self.w, self.x, self.x)
+        return Vec3::new(self.w, self.x, self.x);
     }
 
     pub const fn wxy(&self) -> Vec3<T> {
-        return Vec3::new(self.w, self.x, self.y)
+        return Vec3::new(self.w, self.x, self.y);
     }
 
     pub const fn wxz(&self) -> Vec3<T> {
-        return Vec3::new(self.w, self.x, self.z)
+        return Vec3::new(self.w, self.x, self.z);
     }
 
     pub const fn wxw(&self) -> Vec3<T> {
-        return Vec3::new(self.w, self.x, self.w)
+        return Vec3::new(self.w, self.x, self.w);
     }
 
     pub const fn wyx(&self) -> Vec3<T> {
-        return Vec3::new(self.w, self.y, self.x)
+        return Vec3::new(self.w, self.y, self.x);
     }
 
     pub const fn wyy(&self) -> Vec3<T> {
-        return Vec3::new(self.w, self.y, self.y)
+        return Vec3::new(self.w, self.y, self.y);
     }
 
     pub const fn wyz(&self) -> Vec3<T> {
-        return Vec3::new(self.w, self.y, self.z)
+        return Vec3::new(self.w, self.y, self.z);
     }
 
     pub const fn wyw(&self) -> Vec3<T> {
-        return Vec3::new(self.w, self.y, self.w)
+        return Vec3::new(self.w, self.y, self.w);
     }
 
     pub const fn wzx(&self) -> Vec3<T> {
-        return Vec3::new(self.w, self.z, self.x)
+        return Vec3::new(self.w, self.z, self.x);
     }
 
     pub const fn wzy(&self) -> Vec3<T> {
-        return Vec3::new(self.w, self.z, self.y)
+        return Vec3::new(self.w, self.z, self.y);
     }
 
     pub const fn wzz(&self) -> Vec3<T> {
-        return Vec3::new(self.w, self.z, self.z)
+        return Vec3::new(self.w, self.z, self.z);
     }
 
     pub const fn wzw(&self) -> Vec3<T> {
-        return Vec3::new(self.w, self.z, self.w)
+        return Vec3::new(self.w, self.z, self.w);
     }
 
     pub const fn wwx(&self) -> Vec3<T> {
-        return Vec3::new(self.w, self.w, self.x)
+        return Vec3::new(self.w, self.w, self.x);
     }
 
     pub const fn wwy(&self) -> Vec3<T> {
-        return Vec3::new(self.w, self.w, self.y)
+        return Vec3::new(self.w, self.w, self.y);
     }
 
     pub const fn wwz(&self) -> Vec3<T> {
-        return Vec3::new(self.w, self.w, self.z)
+        return Vec3::new(self.w, self.w, self.z);
     }
 
     pub const fn www(&self) -> Vec3<T> {
-        return Vec3::new(self.w, self.w, self.w)
+        return Vec3::new(self.w, self.w, self.w);
     }
 
     pub const fn xxxx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.x, self.x)
+        return Vec4::new(self.x, self.x, self.x, self.x);
     }
 
     pub const fn xxxy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.x, self.y)
+        return Vec4::new(self.x, self.x, self.x, self.y);
     }
 
     pub const fn xxxz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.x, self.z)
+        return Vec4::new(self.x, self.x, self.x, self.z);
     }
 
     pub const fn xxxw(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.x, self.w)
+        return Vec4::new(self.x, self.x, self.x, self.w);
     }
 
     pub const fn xxyx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.y, self.x)
+        return Vec4::new(self.x, self.x, self.y, self.x);
     }
 
     pub const fn xxyy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.y, self.y)
+        return Vec4::new(self.x, self.x, self.y, self.y);
     }
 
     pub const fn xxyz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.y, self.z)
+        return Vec4::new(self.x, self.x, self.y, self.z);
     }
 
     pub const fn xxyw(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.y, self.w)
+        return Vec4::new(self.x, self.x, self.y, self.w);
     }
 
     pub const fn xxzx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.z, self.x)
+        return Vec4::new(self.x, self.x, self.z, self.x);
     }
 
     pub const fn xxzy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.z, self.y)
+        return Vec4::new(self.x, self.x, self.z, self.y);
     }
 
     pub const fn xxzz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.z, self.z)
+        return Vec4::new(self.x, self.x, self.z, self.z);
     }
 
     pub const fn xxzw(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.z, self.w)
+        return Vec4::new(self.x, self.x, self.z, self.w);
     }
 
     pub const fn xxwx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.w, self.x)
+        return Vec4::new(self.x, self.x, self.w, self.x);
     }
 
     pub const fn xxwy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.w, self.y)
+        return Vec4::new(self.x, self.x, self.w, self.y);
     }
 
     pub const fn xxwz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.w, self.z)
+        return Vec4::new(self.x, self.x, self.w, self.z);
     }
 
     pub const fn xxww(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.x, self.w, self.w)
+        return Vec4::new(self.x, self.x, self.w, self.w);
     }
 
     pub const fn xyxx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.x, self.x)
+        return Vec4::new(self.x, self.y, self.x, self.x);
     }
 
     pub const fn xyxy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.x, self.y)
+        return Vec4::new(self.x, self.y, self.x, self.y);
     }
 
     pub const fn xyxz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.x, self.z)
+        return Vec4::new(self.x, self.y, self.x, self.z);
     }
 
     pub const fn xyxw(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.x, self.w)
+        return Vec4::new(self.x, self.y, self.x, self.w);
     }
 
     pub const fn xyyx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.y, self.x)
+        return Vec4::new(self.x, self.y, self.y, self.x);
     }
 
     pub const fn xyyy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.y, self.y)
+        return Vec4::new(self.x, self.y, self.y, self.y);
     }
 
     pub const fn xyyz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.y, self.z)
+        return Vec4::new(self.x, self.y, self.y, self.z);
     }
 
     pub const fn xyyw(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.y, self.w)
+        return Vec4::new(self.x, self.y, self.y, self.w);
     }
 
     pub const fn xyzx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.z, self.x)
+        return Vec4::new(self.x, self.y, self.z, self.x);
     }
 
     pub const fn xyzy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.z, self.y)
+        return Vec4::new(self.x, self.y, self.z, self.y);
     }
 
     pub const fn xyzz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.z, self.z)
+        return Vec4::new(self.x, self.y, self.z, self.z);
     }
 
     pub const fn xyzw(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.z, self.w)
+        return Vec4::new(self.x, self.y, self.z, self.w);
     }
 
     pub const fn xywx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.w, self.x)
+        return Vec4::new(self.x, self.y, self.w, self.x);
     }
 
     pub const fn xywy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.w, self.y)
+        return Vec4::new(self.x, self.y, self.w, self.y);
     }
 
     pub const fn xywz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.w, self.z)
+        return Vec4::new(self.x, self.y, self.w, self.z);
     }
 
     pub const fn xyww(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.y, self.w, self.w)
+        return Vec4::new(self.x, self.y, self.w, self.w);
     }
 
     pub const fn xzxx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.x, self.x)
+        return Vec4::new(self.x, self.z, self.x, self.x);
     }
 
     pub const fn xzxy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.x, self.y)
+        return Vec4::new(self.x, self.z, self.x, self.y);
     }
 
     pub const fn xzxz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.x, self.z)
+        return Vec4::new(self.x, self.z, self.x, self.z);
     }
 
     pub const fn xzxw(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.x, self.w)
+        return Vec4::new(self.x, self.z, self.x, self.w);
     }
 
     pub const fn xzyx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.y, self.x)
+        return Vec4::new(self.x, self.z, self.y, self.x);
     }
 
     pub const fn xzyy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.y, self.y)
+        return Vec4::new(self.x, self.z, self.y, self.y);
     }
 
     pub const fn xzyz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.y, self.z)
+        return Vec4::new(self.x, self.z, self.y, self.z);
     }
 
     pub const fn xzyw(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.y, self.w)
+        return Vec4::new(self.x, self.z, self.y, self.w);
     }
 
     pub const fn xzzx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.z, self.x)
+        return Vec4::new(self.x, self.z, self.z, self.x);
     }
 
     pub const fn xzzy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.z, self.y)
+        return Vec4::new(self.x, self.z, self.z, self.y);
     }
 
     pub const fn xzzz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.z, self.z)
+        return Vec4::new(self.x, self.z, self.z, self.z);
     }
 
     pub const fn xzzw(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.z, self.w)
+        return Vec4::new(self.x, self.z, self.z, self.w);
     }
 
     pub const fn xzwx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.w, self.x)
+        return Vec4::new(self.x, self.z, self.w, self.x);
     }
 
     pub const fn xzwy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.w, self.y)
+        return Vec4::new(self.x, self.z, self.w, self.y);
     }
 
     pub const fn xzwz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.w, self.z)
+        return Vec4::new(self.x, self.z, self.w, self.z);
     }
 
     pub const fn xzww(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.z, self.w, self.w)
+        return Vec4::new(self.x, self.z, self.w, self.w);
     }
 
     pub const fn xwxx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.w, self.x, self.x)
+        return Vec4::new(self.x, self.w, self.x, self.x);
     }
 
     pub const fn xwxy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.w, self.x, self.y)
+        return Vec4::new(self.x, self.w, self.x, self.y);
     }
 
     pub const fn xwxz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.w, self.x, self.z)
+        return Vec4::new(self.x, self.w, self.x, self.z);
     }
 
     pub const fn xwxw(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.w, self.x, self.w)
+        return Vec4::new(self.x, self.w, self.x, self.w);
     }
 
     pub const fn xwyx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.w, self.y, self.x)
+        return Vec4::new(self.x, self.w, self.y, self.x);
     }
 
     pub const fn xwyy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.w, self.y, self.y)
+        return Vec4::new(self.x, self.w, self.y, self.y);
     }
 
     pub const fn xwyz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.w, self.y, self.z)
+        return Vec4::new(self.x, self.w, self.y, self.z);
     }
 
     pub const fn xwyw(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.w, self.y, self.w)
+        return Vec4::new(self.x, self.w, self.y, self.w);
     }
 
     pub const fn xwzx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.w, self.z, self.x)
+        return Vec4::new(self.x, self.w, self.z, self.x);
     }
 
     pub const fn xwzy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.w, self.z, self.y)
+        return Vec4::new(self.x, self.w, self.z, self.y);
     }
 
     pub const fn xwzz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.w, self.z, self.z)
+        return Vec4::new(self.x, self.w, self.z, self.z);
     }
 
     pub const fn xwzw(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.w, self.z, self.w)
+        return Vec4::new(self.x, self.w, self.z, self.w);
     }
 
     pub const fn xwwx(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.w, self.w, self.x)
+        return Vec4::new(self.x, self.w, self.w, self.x);
     }
 
     pub const fn xwwy(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.w, self.w, self.y)
+        return Vec4::new(self.x, self.w, self.w, self.y);
     }
 
     pub const fn xwwz(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.w, self.w, self.z)
+        return Vec4::new(self.x, self.w, self.w, self.z);
     }
 
     pub const fn xwww(&self) -> Vec4<T> {
-        return Vec4::new(self.x, self.w, self.w, self.w)
+        return Vec4::new(self.x, self.w, self.w, self.w);
     }
 
     pub const fn yxxx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.x, self.x)
+        return Vec4::new(self.y, self.x, self.x, self.x);
     }
 
     pub const fn yxxy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.x, self.y)
+        return Vec4::new(self.y, self.x, self.x, self.y);
     }
 
     pub const fn yxxz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.x, self.z)
+        return Vec4::new(self.y, self.x, self.x, self.z);
     }
 
     pub const fn yxxw(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.x, self.w)
+        return Vec4::new(self.y, self.x, self.x, self.w);
     }
 
     pub const fn yxyx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.y, self.x)
+        return Vec4::new(self.y, self.x, self.y, self.x);
     }
 
     pub const fn yxyy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.y, self.y)
+        return Vec4::new(self.y, self.x, self.y, self.y);
     }
 
     pub const fn yxyz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.y, self.z)
+        return Vec4::new(self.y, self.x, self.y, self.z);
     }
 
     pub const fn yxyw(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.y, self.w)
+        return Vec4::new(self.y, self.x, self.y, self.w);
     }
 
     pub const fn yxzx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.z, self.x)
+        return Vec4::new(self.y, self.x, self.z, self.x);
     }
 
     pub const fn yxzy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.z, self.y)
+        return Vec4::new(self.y, self.x, self.z, self.y);
     }
 
     pub const fn yxzz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.z, self.z)
+        return Vec4::new(self.y, self.x, self.z, self.z);
     }
 
     pub const fn yxzw(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.z, self.w)
+        return Vec4::new(self.y, self.x, self.z, self.w);
     }
 
     pub const fn yxwx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.w, self.x)
+        return Vec4::new(self.y, self.x, self.w, self.x);
     }
 
     pub const fn yxwy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.w, self.y)
+        return Vec4::new(self.y, self.x, self.w, self.y);
     }
 
     pub const fn yxwz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.w, self.z)
+        return Vec4::new(self.y, self.x, self.w, self.z);
     }
 
     pub const fn yxww(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.x, self.w, self.w)
+        return Vec4::new(self.y, self.x, self.w, self.w);
     }
 
     pub const fn yyxx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.x, self.x)
+        return Vec4::new(self.y, self.y, self.x, self.x);
     }
 
     pub const fn yyxy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.x, self.y)
+        return Vec4::new(self.y, self.y, self.x, self.y);
     }
 
     pub const fn yyxz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.x, self.z)
+        return Vec4::new(self.y, self.y, self.x, self.z);
     }
 
     pub const fn yyxw(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.x, self.w)
+        return Vec4::new(self.y, self.y, self.x, self.w);
     }
 
     pub const fn yyyx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.y, self.x)
+        return Vec4::new(self.y, self.y, self.y, self.x);
     }
 
     pub const fn yyyy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.y, self.y)
+        return Vec4::new(self.y, self.y, self.y, self.y);
     }
 
     pub const fn yyyz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.y, self.z)
+        return Vec4::new(self.y, self.y, self.y, self.z);
     }
 
     pub const fn yyyw(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.y, self.w)
+        return Vec4::new(self.y, self.y, self.y, self.w);
     }
 
     pub const fn yyzx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.z, self.x)
+        return Vec4::new(self.y, self.y, self.z, self.x);
     }
 
     pub const fn yyzy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.z, self.y)
+        return Vec4::new(self.y, self.y, self.z, self.y);
     }
 
     pub const fn yyzz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.z, self.z)
+        return Vec4::new(self.y, self.y, self.z, self.z);
     }
 
     pub const fn yyzw(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.z, self.w)
+        return Vec4::new(self.y, self.y, self.z, self.w);
     }
 
     pub const fn yywx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.w, self.x)
+        return Vec4::new(self.y, self.y, self.w, self.x);
     }
 
     pub const fn yywy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.w, self.y)
+        return Vec4::new(self.y, self.y, self.w, self.y);
     }
 
     pub const fn yywz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.w, self.z)
+        return Vec4::new(self.y, self.y, self.w, self.z);
     }
 
     pub const fn yyww(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.y, self.w, self.w)
+        return Vec4::new(self.y, self.y, self.w, self.w);
     }
 
     pub const fn yzxx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.x, self.x)
+        return Vec4::new(self.y, self.z, self.x, self.x);
     }
 
     pub const fn yzxy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.x, self.y)
+        return Vec4::new(self.y, self.z, self.x, self.y);
     }
 
     pub const fn yzxz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.x, self.z)
+        return Vec4::new(self.y, self.z, self.x, self.z);
     }
 
     pub const fn yzxw(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.x, self.w)
+        return Vec4::new(self.y, self.z, self.x, self.w);
     }
 
     pub const fn yzyx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.y, self.x)
+        return Vec4::new(self.y, self.z, self.y, self.x);
     }
 
     pub const fn yzyy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.y, self.y)
+        return Vec4::new(self.y, self.z, self.y, self.y);
     }
 
     pub const fn yzyz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.y, self.z)
+        return Vec4::new(self.y, self.z, self.y, self.z);
     }
 
     pub const fn yzyw(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.y, self.w)
+        return Vec4::new(self.y, self.z, self.y, self.w);
     }
 
     pub const fn yzzx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.z, self.x)
+        return Vec4::new(self.y, self.z, self.z, self.x);
     }
 
     pub const fn yzzy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.z, self.y)
+        return Vec4::new(self.y, self.z, self.z, self.y);
     }
 
     pub const fn yzzz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.z, self.z)
+        return Vec4::new(self.y, self.z, self.z, self.z);
     }
 
     pub const fn yzzw(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.z, self.w)
+        return Vec4::new(self.y, self.z, self.z, self.w);
     }
 
     pub const fn yzwx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.w, self.x)
+        return Vec4::new(self.y, self.z, self.w, self.x);
     }
 
     pub const fn yzwy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.w, self.y)
+        return Vec4::new(self.y, self.z, self.w, self.y);
     }
 
     pub const fn yzwz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.w, self.z)
+        return Vec4::new(self.y, self.z, self.w, self.z);
     }
 
     pub const fn yzww(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.z, self.w, self.w)
+        return Vec4::new(self.y, self.z, self.w, self.w);
     }
 
     pub const fn ywxx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.w, self.x, self.x)
+        return Vec4::new(self.y, self.w, self.x, self.x);
     }
 
     pub const fn ywxy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.w, self.x, self.y)
+        return Vec4::new(self.y, self.w, self.x, self.y);
     }
 
     pub const fn ywxz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.w, self.x, self.z)
+        return Vec4::new(self.y, self.w, self.x, self.z);
     }
 
     pub const fn ywxw(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.w, self.x, self.w)
+        return Vec4::new(self.y, self.w, self.x, self.w);
     }
 
     pub const fn ywyx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.w, self.y, self.x)
+        return Vec4::new(self.y, self.w, self.y, self.x);
     }
 
     pub const fn ywyy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.w, self.y, self.y)
+        return Vec4::new(self.y, self.w, self.y, self.y);
     }
 
     pub const fn ywyz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.w, self.y, self.z)
+        return Vec4::new(self.y, self.w, self.y, self.z);
     }
 
     pub const fn ywyw(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.w, self.y, self.w)
+        return Vec4::new(self.y, self.w, self.y, self.w);
     }
 
     pub const fn ywzx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.w, self.z, self.x)
+        return Vec4::new(self.y, self.w, self.z, self.x);
     }
 
     pub const fn ywzy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.w, self.z, self.y)
+        return Vec4::new(self.y, self.w, self.z, self.y);
     }
 
     pub const fn ywzz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.w, self.z, self.z)
+        return Vec4::new(self.y, self.w, self.z, self.z);
     }
 
     pub const fn ywzw(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.w, self.z, self.w)
+        return Vec4::new(self.y, self.w, self.z, self.w);
     }
 
     pub const fn ywwx(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.w, self.w, self.x)
+        return Vec4::new(self.y, self.w, self.w, self.x);
     }
 
     pub const fn ywwy(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.w, self.w, self.y)
+        return Vec4::new(self.y, self.w, self.w, self.y);
     }
 
     pub const fn ywwz(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.w, self.w, self.z)
+        return Vec4::new(self.y, self.w, self.w, self.z);
     }
 
     pub const fn ywww(&self) -> Vec4<T> {
-        return Vec4::new(self.y, self.w, self.w, self.w)
+        return Vec4::new(self.y, self.w, self.w, self.w);
     }
 
     pub const fn zxxx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.x, self.x)
+        return Vec4::new(self.z, self.x, self.x, self.x);
     }
 
     pub const fn zxxy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.x, self.y)
+        return Vec4::new(self.z, self.x, self.x, self.y);
     }
 
     pub const fn zxxz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.x, self.z)
+        return Vec4::new(self.z, self.x, self.x, self.z);
     }
 
     pub const fn zxxw(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.x, self.w)
+        return Vec4::new(self.z, self.x, self.x, self.w);
     }
 
     pub const fn zxyx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.y, self.x)
+        return Vec4::new(self.z, self.x, self.y, self.x);
     }
 
     pub const fn zxyy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.y, self.y)
+        return Vec4::new(self.z, self.x, self.y, self.y);
     }
 
     pub const fn zxyz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.y, self.z)
+        return Vec4::new(self.z, self.x, self.y, self.z);
     }
 
     pub const fn zxyw(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.y, self.w)
+        return Vec4::new(self.z, self.x, self.y, self.w);
     }
 
     pub const fn zxzx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.z, self.x)
+        return Vec4::new(self.z, self.x, self.z, self.x);
     }
 
     pub const fn zxzy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.z, self.y)
+        return Vec4::new(self.z, self.x, self.z, self.y);
     }
 
     pub const fn zxzz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.z, self.z)
+        return Vec4::new(self.z, self.x, self.z, self.z);
     }
 
     pub const fn zxzw(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.z, self.w)
+        return Vec4::new(self.z, self.x, self.z, self.w);
     }
 
     pub const fn zxwx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.w, self.x)
+        return Vec4::new(self.z, self.x, self.w, self.x);
     }
 
     pub const fn zxwy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.w, self.y)
+        return Vec4::new(self.z, self.x, self.w, self.y);
     }
 
     pub const fn zxwz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.w, self.z)
+        return Vec4::new(self.z, self.x, self.w, self.z);
     }
 
     pub const fn zxww(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.x, self.w, self.w)
+        return Vec4::new(self.z, self.x, self.w, self.w);
     }
 
     pub const fn zyxx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.x, self.x)
+        return Vec4::new(self.z, self.y, self.x, self.x);
     }
 
     pub const fn zyxy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.x, self.y)
+        return Vec4::new(self.z, self.y, self.x, self.y);
     }
 
     pub const fn zyxz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.x, self.z)
+        return Vec4::new(self.z, self.y, self.x, self.z);
     }
 
     pub const fn zyxw(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.x, self.w)
+        return Vec4::new(self.z, self.y, self.x, self.w);
     }
 
     pub const fn zyyx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.y, self.x)
+        return Vec4::new(self.z, self.y, self.y, self.x);
     }
 
     pub const fn zyyy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.y, self.y)
+        return Vec4::new(self.z, self.y, self.y, self.y);
     }
 
     pub const fn zyyz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.y, self.z)
+        return Vec4::new(self.z, self.y, self.y, self.z);
     }
 
     pub const fn zyyw(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.y, self.w)
+        return Vec4::new(self.z, self.y, self.y, self.w);
     }
 
     pub const fn zyzx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.z, self.x)
+        return Vec4::new(self.z, self.y, self.z, self.x);
     }
 
     pub const fn zyzy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.z, self.y)
+        return Vec4::new(self.z, self.y, self.z, self.y);
     }
 
     pub const fn zyzz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.z, self.z)
+        return Vec4::new(self.z, self.y, self.z, self.z);
     }
 
     pub const fn zyzw(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.z, self.w)
+        return Vec4::new(self.z, self.y, self.z, self.w);
     }
 
     pub const fn zywx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.w, self.x)
+        return Vec4::new(self.z, self.y, self.w, self.x);
     }
 
     pub const fn zywy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.w, self.y)
+        return Vec4::new(self.z, self.y, self.w, self.y);
     }
 
     pub const fn zywz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.w, self.z)
+        return Vec4::new(self.z, self.y, self.w, self.z);
     }
 
     pub const fn zyww(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.y, self.w, self.w)
+        return Vec4::new(self.z, self.y, self.w, self.w);
     }
 
     pub const fn zzxx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.x, self.x)
+        return Vec4::new(self.z, self.z, self.x, self.x);
     }
 
     pub const fn zzxy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.x, self.y)
+        return Vec4::new(self.z, self.z, self.x, self.y);
     }
 
     pub const fn zzxz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.x, self.z)
+        return Vec4::new(self.z, self.z, self.x, self.z);
     }
 
     pub const fn zzxw(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.x, self.w)
+        return Vec4::new(self.z, self.z, self.x, self.w);
     }
 
     pub const fn zzyx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.y, self.x)
+        return Vec4::new(self.z, self.z, self.y, self.x);
     }
 
     pub const fn zzyy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.y, self.y)
+        return Vec4::new(self.z, self.z, self.y, self.y);
     }
 
     pub const fn zzyz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.y, self.z)
+        return Vec4::new(self.z, self.z, self.y, self.z);
     }
 
     pub const fn zzyw(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.y, self.w)
+        return Vec4::new(self.z, self.z, self.y, self.w);
     }
 
     pub const fn zzzx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.z, self.x)
+        return Vec4::new(self.z, self.z, self.z, self.x);
     }
 
     pub const fn zzzy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.z, self.y)
+        return Vec4::new(self.z, self.z, self.z, self.y);
     }
 
     pub const fn zzzz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.z, self.z)
+        return Vec4::new(self.z, self.z, self.z, self.z);
     }
 
     pub const fn zzzw(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.z, self.w)
+        return Vec4::new(self.z, self.z, self.z, self.w);
     }
 
     pub const fn zzwx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.w, self.x)
+        return Vec4::new(self.z, self.z, self.w, self.x);
     }
 
     pub const fn zzwy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.w, self.y)
+        return Vec4::new(self.z, self.z, self.w, self.y);
     }
 
     pub const fn zzwz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.w, self.z)
+        return Vec4::new(self.z, self.z, self.w, self.z);
     }
 
     pub const fn zzww(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.z, self.w, self.w)
+        return Vec4::new(self.z, self.z, self.w, self.w);
     }
 
     pub const fn zwxx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.w, self.x, self.x)
+        return Vec4::new(self.z, self.w, self.x, self.x);
     }
 
     pub const fn zwxy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.w, self.x, self.y)
+        return Vec4::new(self.z, self.w, self.x, self.y);
     }
 
     pub const fn zwxz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.w, self.x, self.z)
+        return Vec4::new(self.z, self.w, self.x, self.z);
     }
 
     pub const fn zwxw(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.w, self.x, self.w)
+        return Vec4::new(self.z, self.w, self.x, self.w);
     }
 
     pub const fn zwyx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.w, self.y, self.x)
+        return Vec4::new(self.z, self.w, self.y, self.x);
     }
 
     pub const fn zwyy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.w, self.y, self.y)
+        return Vec4::new(self.z, self.w, self.y, self.y);
     }
 
     pub const fn zwyz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.w, self.y, self.z)
+        return Vec4::new(self.z, self.w, self.y, self.z);
     }
 
     pub const fn zwyw(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.w, self.y, self.w)
+        return Vec4::new(self.z, self.w, self.y, self.w);
     }
 
     pub const fn zwzx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.w, self.z, self.x)
+        return Vec4::new(self.z, self.w, self.z, self.x);
     }
 
     pub const fn zwzy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.w, self.z, self.y)
+        return Vec4::new(self.z, self.w, self.z, self.y);
     }
 
     pub const fn zwzz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.w, self.z, self.z)
+        return Vec4::new(self.z, self.w, self.z, self.z);
     }
 
     pub const fn zwzw(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.w, self.z, self.w)
+        return Vec4::new(self.z, self.w, self.z, self.w);
     }
 
     pub const fn zwwx(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.w, self.w, self.x)
+        return Vec4::new(self.z, self.w, self.w, self.x);
     }
 
     pub const fn zwwy(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.w, self.w, self.y)
+        return Vec4::new(self.z, self.w, self.w, self.y);
     }
 
     pub const fn zwwz(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.w, self.w, self.z)
+        return Vec4::new(self.z, self.w, self.w, self.z);
     }
 
     pub const fn zwww(&self) -> Vec4<T> {
-        return Vec4::new(self.z, self.w, self.w, self.w)
+        return Vec4::new(self.z, self.w, self.w, self.w);
     }
 
     pub const fn wxxx(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.x, self.x, self.x)
+        return Vec4::new(self.w, self.x, self.x, self.x);
     }
 
     pub const fn wxxy(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.x, self.x, self.y)
+        return Vec4::new(self.w, self.x, self.x, self.y);
     }
 
     pub const fn wxxz(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.x, self.x, self.z)
+        return Vec4::new(self.w, self.x, self.x, self.z);
     }
 
     pub const fn wxxw(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.x, self.x, self.w)
+        return Vec4::new(self.w, self.x, self.x, self.w);
     }
 
     pub const fn wxyx(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.x, self.y, self.x)
+        return Vec4::new(self.w, self.x, self.y, self.x);
     }
 
     pub const fn wxyy(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.x, self.y, self.y)
+        return Vec4::new(self.w, self.x, self.y, self.y);
     }
 
     pub const fn wxyz(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.x, self.y, self.z)
+        return Vec4::new(self.w, self.x, self.y, self.z);
     }
 
     pub const fn wxyw(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.x, self.y, self.w)
+        return Vec4::new(self.w, self.x, self.y, self.w);
     }
 
     pub const fn wxzx(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.x, self.z, self.x)
+        return Vec4::new(self.w, self.x, self.z, self.x);
     }
 
     pub const fn wxzy(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.x, self.z, self.y)
+        return Vec4::new(self.w, self.x, self.z, self.y);
     }
 
     pub const fn wxzz(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.x, self.z, self.z)
+        return Vec4::new(self.w, self.x, self.z, self.z);
     }
 
     pub const fn wxzw(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.x, self.z, self.w)
+        return Vec4::new(self.w, self.x, self.z, self.w);
     }
 
     pub const fn wxwx(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.x, self.w, self.x)
+        return Vec4::new(self.w, self.x, self.w, self.x);
     }
 
     pub const fn wxwy(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.x, self.w, self.y)
+        return Vec4::new(self.w, self.x, self.w, self.y);
     }
 
     pub const fn wxwz(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.x, self.w, self.z)
+        return Vec4::new(self.w, self.x, self.w, self.z);
     }
 
     pub const fn wxww(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.x, self.w, self.w)
+        return Vec4::new(self.w, self.x, self.w, self.w);
     }
 
     pub const fn wyxx(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.y, self.x, self.x)
+        return Vec4::new(self.w, self.y, self.x, self.x);
     }
 
     pub const fn wyxy(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.y, self.x, self.y)
+        return Vec4::new(self.w, self.y, self.x, self.y);
     }
 
     pub const fn wyxz(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.y, self.x, self.z)
+        return Vec4::new(self.w, self.y, self.x, self.z);
     }
 
     pub const fn wyxw(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.y, self.x, self.w)
+        return Vec4::new(self.w, self.y, self.x, self.w);
     }
 
     pub const fn wyyx(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.y, self.y, self.x)
+        return Vec4::new(self.w, self.y, self.y, self.x);
     }
 
     pub const fn wyyy(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.y, self.y, self.y)
+        return Vec4::new(self.w, self.y, self.y, self.y);
     }
 
     pub const fn wyyz(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.y, self.y, self.z)
+        return Vec4::new(self.w, self.y, self.y, self.z);
     }
 
     pub const fn wyyw(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.y, self.y, self.w)
+        return Vec4::new(self.w, self.y, self.y, self.w);
     }
 
     pub const fn wyzx(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.y, self.z, self.x)
+        return Vec4::new(self.w, self.y, self.z, self.x);
     }
 
     pub const fn wyzy(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.y, self.z, self.y)
+        return Vec4::new(self.w, self.y, self.z, self.y);
     }
 
     pub const fn wyzz(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.y, self.z, self.z)
+        return Vec4::new(self.w, self.y, self.z, self.z);
     }
 
     pub const fn wyzw(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.y, self.z, self.w)
+        return Vec4::new(self.w, self.y, self.z, self.w);
     }
 
     pub const fn wywx(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.y, self.w, self.x)
+        return Vec4::new(self.w, self.y, self.w, self.x);
     }
 
     pub const fn wywy(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.y, self.w, self.y)
+        return Vec4::new(self.w, self.y, self.w, self.y);
     }
 
     pub const fn wywz(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.y, self.w, self.z)
+        return Vec4::new(self.w, self.y, self.w, self.z);
     }
 
     pub const fn wyww(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.y, self.w, self.w)
+        return Vec4::new(self.w, self.y, self.w, self.w);
     }
 
     pub const fn wzxx(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.z, self.x, self.x)
+        return Vec4::new(self.w, self.z, self.x, self.x);
     }
 
     pub const fn wzxy(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.z, self.x, self.y)
+        return Vec4::new(self.w, self.z, self.x, self.y);
     }
 
     pub const fn wzxz(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.z, self.x, self.z)
+        return Vec4::new(self.w, self.z, self.x, self.z);
     }
 
     pub const fn wzxw(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.z, self.x, self.w)
+        return Vec4::new(self.w, self.z, self.x, self.w);
     }
 
     pub const fn wzyx(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.z, self.y, self.x)
+        return Vec4::new(self.w, self.z, self.y, self.x);
     }
 
     pub const fn wzyy(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.z, self.y, self.y)
+        return Vec4::new(self.w, self.z, self.y, self.y);
     }
 
     pub const fn wzyz(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.z, self.y, self.z)
+        return Vec4::new(self.w, self.z, self.y, self.z);
     }
 
     pub const fn wzyw(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.z, self.y, self.w)
+        return Vec4::new(self.w, self.z, self.y, self.w);
     }
 
     pub const fn wzzx(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.z, self.z, self.x)
+        return Vec4::new(self.w, self.z, self.z, self.x);
     }
 
     pub const fn wzzy(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.z, self.z, self.y)
+        return Vec4::new(self.w, self.z, self.z, self.y);
     }
 
     pub const fn wzzz(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.z, self.z, self.z)
+        return Vec4::new(self.w, self.z, self.z, self.z);
     }
 
     pub const fn wzzw(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.z, self.z, self.w)
+        return Vec4::new(self.w, self.z, self.z, self.w);
     }
 
     pub const fn wzwx(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.z, self.w, self.x)
+        return Vec4::new(self.w, self.z, self.w, self.x);
     }
 
     pub const fn wzwy(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.z, self.w, self.y)
+        return Vec4::new(self.w, self.z, self.w, self.y);
     }
 
     pub const fn wzwz(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.z, self.w, self.z)
+        return Vec4::new(self.w, self.z, self.w, self.z);
     }
 
     pub const fn wzww(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.z, self.w, self.w)
+        return Vec4::new(self.w, self.z, self.w, self.w);
     }
 
     pub const fn wwxx(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.w, self.x, self.x)
+        return Vec4::new(self.w, self.w, self.x, self.x);
     }
 
     pub const fn wwxy(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.w, self.x, self.y)
+        return Vec4::new(self.w, self.w, self.x, self.y);
     }
 
     pub const fn wwxz(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.w, self.x, self.z)
+        return Vec4::new(self.w, self.w, self.x, self.z);
     }
 
     pub const fn wwxw(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.w, self.x, self.w)
+        return Vec4::new(self.w, self.w, self.x, self.w);
     }
 
     pub const fn wwyx(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.w, self.y, self.x)
+        return Vec4::new(self.w, self.w, self.y, self.x);
     }
 
     pub const fn wwyy(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.w, self.y, self.y)
+        return Vec4::new(self.w, self.w, self.y, self.y);
     }
 
     pub const fn wwyz(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.w, self.y, self.z)
+        return Vec4::new(self.w, self.w, self.y, self.z);
     }
 
     pub const fn wwyw(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.w, self.y, self.w)
+        return Vec4::new(self.w, self.w, self.y, self.w);
     }
 
     pub const fn wwzx(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.w, self.z, self.x)
+        return Vec4::new(self.w, self.w, self.z, self.x);
     }
 
     pub const fn wwzy(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.w, self.z, self.y)
+        return Vec4::new(self.w, self.w, self.z, self.y);
     }
 
     pub const fn wwzz(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.w, self.z, self.z)
+        return Vec4::new(self.w, self.w, self.z, self.z);
     }
 
     pub const fn wwzw(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.w, self.z, self.w)
+        return Vec4::new(self.w, self.w, self.z, self.w);
     }
 
     pub const fn wwwx(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.w, self.w, self.x)
+        return Vec4::new(self.w, self.w, self.w, self.x);
     }
 
     pub const fn wwwy(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.w, self.w, self.y)
+        return Vec4::new(self.w, self.w, self.w, self.y);
     }
 
     pub const fn wwwz(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.w, self.w, self.z)
+        return Vec4::new(self.w, self.w, self.w, self.z);
     }
 
     pub const fn wwww(&self) -> Vec4<T> {
-        return Vec4::new(self.w, self.w, self.w, self.w)
+        return Vec4::new(self.w, self.w, self.w, self.w);
     }
 }
-

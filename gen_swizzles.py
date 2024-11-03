@@ -10,7 +10,7 @@ def generate_swizzle_methods(components):
                 method_body = f"self.{swizzle[0]}"
                 method = f"""
     pub const fn {method_name}(&self) -> {return_type} {{
-        return {method_body}
+        return {method_body};
     }}
 """
             else:
@@ -19,7 +19,7 @@ def generate_swizzle_methods(components):
                 method_body = f"Vec{length}::new({', '.join(f'self.{c}' for c in swizzle)})"
                 method = f"""
     pub const fn {method_name}(&self) -> {return_type} {{
-        return {method_body}
+        return {method_body};
     }}
 """
             methods.append(method)
