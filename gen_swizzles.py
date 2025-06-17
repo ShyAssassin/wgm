@@ -9,6 +9,7 @@ def generate_swizzle_methods(components):
                 return_type = "T"
                 method_body = f"self.{swizzle[0]}"
                 method = f"""
+    #[inline(always)]
     pub const fn {method_name}(&self) -> {return_type} {{
         return {method_body};
     }}
@@ -18,6 +19,7 @@ def generate_swizzle_methods(components):
                 return_type = f"Vec{length}<T>"
                 method_body = f"Vec{length}::new({', '.join(f'self.{c}' for c in swizzle)})"
                 method = f"""
+    #[inline(always)]
     pub const fn {method_name}(&self) -> {return_type} {{
         return {method_body};
     }}
