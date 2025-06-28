@@ -70,6 +70,7 @@ impl<T> Vec2<T> {
     where T: Mul<Output = T> + Add<Output = T> {
         return (self.x * rhs.x) + (self.y * rhs.y)
     }
+
     /// Linearly interpolate between `self` and `other` by `t`.
     pub fn lerp(self, other: Vec2<T>, t: T) -> Self
     where T: Float + Mul<Output = T> + Add<Output = T> + Sub<Output = T> {
