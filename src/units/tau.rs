@@ -1,8 +1,8 @@
 use super::{Deg, Rad};
 use num_traits::Float;
 use std::f64::consts::PI;
-use std::ops::{Mul, Div, Add, Sub};
-use std::ops::{MulAssign, DivAssign, AddAssign, SubAssign};
+use std::ops::{Add, Sub, Mul, Div};
+use std::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
 
 #[repr(C)]
 #[derive(Debug)]

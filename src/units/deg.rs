@@ -1,7 +1,7 @@
 use super::{Rad, Tau};
 use num_traits::Float;
-use std::ops::{Mul, Div, Add, Sub};
-use std::ops::{MulAssign, DivAssign, AddAssign, SubAssign};
+use std::ops::{Add, Sub, Mul, Div};
+use std::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
 
 #[repr(C)]
 #[derive(Debug)]
