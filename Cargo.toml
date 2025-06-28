@@ -9,24 +9,25 @@ keywords = ["gamedev", "math", "vector", "matrix"]
 description = "A fast and simple math library for game and graphics development"
 
 [features]
-default = ["rand", "bytemuck", "swizzle", "serde"]
-bytemuck = ["dep:bytemuck"]
-serde = ["dep:serde"]
-rand = ["dep:rand"]
 swizzle = []
+rand = ["dep:rand"]
+serde = ["dep:serde"]
+bytemuck = ["dep:bytemuck"]
 
 [dependencies]
-rand = {version = "0.8.5", default-features = false, optional = true}
-serde = {version = "1.0.207", default-features = false, optional = true}
-bytemuck = {version = "1.16.3", default-features = false, optional = true}
-num-traits = {version = "0.2.19", default-features = false, features = ["std"] }
+rand = { version = "0.8.5", default-features = false, optional = true }
+serde = { version = "1.0.207", default-features = false, optional = true }
+bytemuck = { version = "1.16.3", default-features = false, optional = true }
+num-traits = { version = "0.2.19", default-features = false, features = ["std"] }
 
 [lints.clippy]
 needless_return = "allow"
 redundant_field_names = "allow"
 
+# Used for testing and examples
 [dev-dependencies]
 rand = { version = "0.8.5" }
 serde_json = { version = "1.0.127" }
+glam = { version = "0.30.4", features = ["std"] }
 serde = { version = "1.0.207", features = ["derive"] }
 wgm = { path = ".", features = ["rand", "serde", "swizzle"] }
