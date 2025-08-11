@@ -11,7 +11,7 @@ def generate_swizzle_methods(components):
                 method = f"""
     #[inline(always)]
     pub const fn {method_name}(&self) -> {return_type} {{
-        return {method_body};
+        return {method_body}
     }}
 """
             else:
@@ -21,7 +21,7 @@ def generate_swizzle_methods(components):
                 method = f"""
     #[inline(always)]
     pub const fn {method_name}(&self) -> {return_type} {{
-        return {method_body};
+        return {method_body}
     }}
 """
             methods.append(method)

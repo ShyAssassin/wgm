@@ -13,32 +13,32 @@ pub struct Deg<T: Float>(T);
 impl<T: Float> Deg<T> {
     /// Create a new `Deg<T>` from the given value.
     pub const fn new(value: T) -> Self {
-        return Self(value);
+        return Self(value)
     }
 
     /// Get the inner value `T` of `Deg<T>`.
     pub const fn inner(&self) -> T {
-        return self.0;
+        return self.0
     }
 
     /// Convert a `Rad<T>` to a `Deg<T>`.
     pub fn from_rad(rad: Rad<T>) -> Self {
-        return Self::new(rad.inner().to_degrees());
+        return Self::new(rad.inner().to_degrees())
     }
 
     /// Convert a `Deg<T>` to a `Rad<T>`.
     pub fn to_rad(self) -> Rad<T> {
-        return Rad::new(self.inner().to_radians());
+        return Rad::new(self.inner().to_radians())
     }
 
     /// Convert a `Tau<T>` to a `Deg<T>`.
     pub fn from_tau(tau: Tau<T>) -> Self {
-        return Self::new(tau.inner() * T::from(360).unwrap());
+        return Self::new(tau.inner() * T::from(360).unwrap())
     }
 
     /// Convert a `Deg<T>` to a `Tau<T>`.
     pub fn to_tau(self) -> Tau<T> {
-        return Tau::new(self.inner() / T::from(360).unwrap());
+        return Tau::new(self.inner() / T::from(360).unwrap())
     }
 }
 
@@ -47,7 +47,7 @@ impl<T: Float> Mul<Deg<T>> for Deg<T> {
     type Output = Deg<T>;
 
     fn mul(self, rhs: Deg<T>) -> Self::Output {
-        return Deg::new(self.0 * rhs.0);
+        return Deg::new(self.0 * rhs.0)
     }
 }
 
@@ -63,7 +63,7 @@ impl<T: Float> Div<Deg<T>> for Deg<T> {
     type Output = Deg<T>;
 
     fn div(self, rhs: Deg<T>) -> Self::Output {
-        return Deg::new(self.0 / rhs.0);
+        return Deg::new(self.0 / rhs.0)
     }
 }
 
@@ -79,7 +79,7 @@ impl<T: Float> Add<Deg<T>> for Deg<T> {
     type Output = Deg<T>;
 
     fn add(self, rhs: Deg<T>) -> Self::Output {
-        return Deg::new(self.0 + rhs.0);
+        return Deg::new(self.0 + rhs.0)
     }
 }
 
@@ -95,7 +95,7 @@ impl<T: Float> Sub<Deg<T>> for Deg<T> {
     type Output = Deg<T>;
 
     fn sub(self, rhs: Deg<T>) -> Self::Output {
-        return Deg::new(self.0 - rhs.0);
+        return Deg::new(self.0 - rhs.0)
     }
 }
 

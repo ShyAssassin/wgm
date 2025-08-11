@@ -4,6 +4,7 @@ use super::Vec3;
 #[derive(Debug)]
 #[derive(Copy, Clone)]
 #[derive(PartialEq, Eq, Default)]
+/// A 3x3 column major matrix of type T.
 pub struct Mat3<T> {
     pub x: Vec3<T>,
     pub y: Vec3<T>,
@@ -11,7 +12,8 @@ pub struct Mat3<T> {
 }
 
 impl<T> Mat3<T> {
+    /// Create a new `Mat3<T>` with the given x, y and z vectors.
     pub const fn new(x: Vec3<T>, y: Vec3<T>, z: Vec3<T>) -> Self {
-        Self { x, y, z }
+        return Self { x, y, z }
     }
 }

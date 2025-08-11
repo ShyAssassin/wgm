@@ -29,17 +29,17 @@ impl<T: Float> Rad<T> {
 
     /// Convert a `Rad<T>` to a `Deg<T>`.
     pub fn to_deg(self) -> Deg<T> {
-        return Deg::new(self.inner().to_degrees());
+        return Deg::new(self.inner().to_degrees())
     }
 
     ///  Convert a `Tau<T>` to a `Rad<T>`.
     pub fn from_tau(tau: Tau<T>) -> Self {
-        return Self::new(tau.inner() * T::from(2.0 * PI).unwrap());
+        return Self::new(tau.inner() * T::from(2.0 * PI).unwrap())
     }
 
     /// Convert a `Rad<T>` to a `Tau<T>`.
     pub fn to_tau(self) -> Tau<T> {
-        return Tau::new(self.inner() / T::from(2.0 * PI).unwrap());
+        return Tau::new(self.inner() / T::from(2.0 * PI).unwrap())
     }
 }
 
@@ -48,7 +48,7 @@ impl<T: Float> Mul<Rad<T>> for Rad<T> {
     type Output = Rad<T>;
 
     fn mul(self, rhs: Rad<T>) -> Self::Output {
-        return Rad::new(self.0 * rhs.0);
+        return Rad::new(self.0 * rhs.0)
     }
 }
 
@@ -64,7 +64,7 @@ impl<T: Float> Div<Rad<T>> for Rad<T> {
     type Output = Rad<T>;
 
     fn div(self, rhs: Rad<T>) -> Self::Output {
-        return Rad::new(self.0 / rhs.0);
+        return Rad::new(self.0 / rhs.0)
     }
 }
 
@@ -80,7 +80,7 @@ impl<T: Float> Add<Rad<T>> for Rad<T> {
     type Output = Rad<T>;
 
     fn add(self, rhs: Rad<T>) -> Self::Output {
-        return Rad::new(self.0 + rhs.0);
+        return Rad::new(self.0 + rhs.0)
     }
 }
 
@@ -96,7 +96,7 @@ impl<T: Float> Sub<Rad<T>> for Rad<T> {
     type Output = Rad<T>;
 
     fn sub(self, rhs: Rad<T>) -> Self::Output {
-        return Rad::new(self.0 - rhs.0);
+        return Rad::new(self.0 - rhs.0)
     }
 }
 

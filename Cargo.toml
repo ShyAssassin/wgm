@@ -3,8 +3,8 @@ name = "wgm"
 license = "MIT"
 edition = "2021"
 version = "0.0.7"
-repository = "https://github.com/ShyAssassin/wgm"
 categories = ["mathematics", "game-development"]
+repository = "https://github.com/ShyAssassin/wgm"
 keywords = ["gamedev", "math", "vector", "matrix"]
 description = "A fast and simple math library for game and graphics development"
 
@@ -21,6 +21,7 @@ bytemuck = { version = "1.16.3", default-features = false, optional = true }
 num-traits = { version = "0.2.19", default-features = false, features = ["std"] }
 
 [lints.clippy]
+implicit_return = "deny"
 needless_return = "allow"
 redundant_field_names = "allow"
 
