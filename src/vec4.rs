@@ -1,6 +1,6 @@
-use num_traits::Float;
 use super::{Vec2, Vec3};
-use std::ops::{Add, Sub, Mul, Div};
+use std::ops::{Add, Sub, Mul, Div, Neg};
+use num_traits::{Float, Signed, One, Zero};
 use std::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
 
 #[repr(C)]
@@ -27,6 +27,42 @@ impl<T> Vec4<T> {
         return Self::new(v, v, v, v)
     }
 
+    /// A `Vec4<T>` with all components set to zero.
+    pub fn zero() -> Self
+    where T: Zero {
+        return Self::new(T::zero(), T::zero(), T::zero(), T::zero())
+    }
+
+    /// A `Vec4<T>` with all components set to one.
+    pub fn one() -> Self
+    where T: One {
+        return Self::new(T::one(), T::one(), T::one(), T::one())
+    }
+
+    /// A `Vec4<T>` with the x component set to one and all others to zero.
+    pub fn unit_x() -> Self
+    where T: Zero + One {
+        return Self::new(T::one(), T::zero(), T::zero(), T::zero())
+    }
+
+    /// A `Vec4<T>` with the y component set to one and all others to zero.
+    pub fn unit_y() -> Self
+    where T: Zero + One {
+        return Self::new(T::zero(), T::one(), T::zero(), T::zero())
+    }
+
+    /// A `Vec4<T>` with the z component set to one and all others to zero.
+    pub fn unit_z() -> Self
+    where T: Zero + One {
+        return Self::new(T::zero(), T::zero(), T::one(), T::zero())
+    }
+
+    /// A `Vec4<T>` with the w component set to one and all others to zero.
+    pub fn unit_w() -> Self
+    where T: Zero + One {
+        return Self::new(T::zero(), T::zero(), T::zero(), T::one())
+    }
+
     /// Truncate a `Vec4<T>` into a `Vec3<T>` by dropping the w component.
     pub fn truncate(self) -> Vec3<T> {
         return Vec3::new(self.x, self.y, self.z)
@@ -34,49 +70,61 @@ impl<T> Vec4<T> {
 
     /// Return the length of the vector.
     pub fn length(self) -> T
-    where T: Float + Mul<Output = T> + Add<Output = T> {
+    where T: Float {
         return self.length_squared().sqrt()
     }
 
     /// Return the squared length of the vector.
     pub fn length_squared(self) -> T
-    where T: Float + Mul<Output = T> + Add<Output = T> {
+    where T: Copy + Mul<Output = T> + Add<Output = T> {
         return self.x * self.x + self.y * self.y + self.z * self.z + self.w * self.w
     }
 
     /// Calculate the distance between `self` and `other`.
     pub fn distance(self, other: Vec4<T>) -> T
-    where T: Float + Sub<Output = T> + Mul<Output = T> + Add<Output = T> {
+    where T: Float {
         return (self - other).length()
+    }
+
+    /// Calculate the squared distance between `self` and `other`.
+    pub fn distance_squared(self, other: Vec4<T>) -> T
+    where T: Copy + Sub<Output = T> + Mul<Output = T> + Add<Output = T> {
+        return (self - other).length_squared()
     }
 
     /// Normalize `self` within a range of 0 to 1.
     pub fn normalize(self) -> Self
-    where T: Float + Div<Output = T> {
+    where T: Float {
         return self / self.length()
     }
 
     /// Normalize the vector within a range of `lower` to `upper`.
     pub fn normalize_between(self, lower: T, upper: T) -> Self
-    where T: Float + Div<Output = T> {
+    where T: Float {
         return self.normalize() * (upper - lower) + lower
     }
 
     /// Compute the dot product of `self` and `rhs`.
     pub fn dot(self, rhs: Vec4<T>) -> T
-    where T: Mul<Output = T> + Add<Output = T> {
+    where T: Copy + Mul<Output = T> + Add<Output = T> {
         return (self.x * rhs.x) + (self.y * rhs.y) + (self.z * rhs.z) + (self.w * rhs.w)
+    }
+
+    /// Fused multiply-add. Computes `(self * a) + b`
+    pub fn mul_add(self, a: Vec4<T>, b: Vec4<T>) -> Self
+    where T: Copy + Mul<Output = T> + Add<Output = T> {
+        return Self::new(self.x * a.x + b.x, self.y * a.y + b.y, self.z * a.z + b.z, self.w * a.w + b.w)
     }
 
     /// Linearly interpolate between `self` and `other` by `t`.
     pub fn lerp(self, other: Vec4<T>, t: T) -> Self
-    where T: Float + Mul<Output = T> + Add<Output = T> + Sub<Output = T> {
+    where T: Copy + One + Sub<Output = T> + Add<Output = T> + Mul<Output = T> {
         return self * (T::one() - t) + other * t
     }
 
     /// Return the minimum of `self` and `other`.
     pub fn min(self, other: Vec4<T>) -> Self
-    where T: Float + PartialOrd {
+    where T: PartialOrd + Copy {
         return Self {
             x: if self.x < other.x { self.x } else { other.x },
             y: if self.y < other.y { self.y } else { other.y },
@@ -87,7 +135,7 @@ impl<T> Vec4<T> {
 
     /// Return the maximum of `self` and `other`.
     pub fn max(self, other: Vec4<T>) -> Self
-    where T: Float + PartialOrd {
+    where T: PartialOrd + Copy {
         return Self {
             x: if self.x > other.x { self.x } else { other.x },
             y: if self.y > other.y { self.y } else { other.y },
@@ -98,19 +146,50 @@ impl<T> Vec4<T> {
 
     /// Clamp `self` between `min` and `max`.
     pub fn clamp(self, min: Vec4<T>, max: Vec4<T>) -> Self
-    where T: Float + PartialOrd {
-        return Self {
-            x: if self.x < min.x { min.x } else if self.x > max.x { max.x } else { self.x },
-            y: if self.y < min.y { min.y } else if self.y > max.y { max.y } else { self.y },
-            z: if self.z < min.z { min.z } else if self.z > max.z { max.z } else { self.z },
-            w: if self.w < min.w { min.w } else if self.w > max.w { max.w } else { self.w },
-        }
+    where T: PartialOrd + Copy {
+        return self.max(min).min(max)
     }
 
     /// Returns a vector with the absolute value of each component.
     pub fn abs(self) -> Self
-    where T: Float {
+    where T: Signed {
         return Self::new(self.x.abs(), self.y.abs(), self.z.abs(), self.w.abs())
+    }
+
+    /// Returns a vector with the sign of each component.
+    pub fn signum(self) -> Self
+    where T: Signed {
+        return Self::new(self.x.signum(), self.y.signum(), self.z.signum(), self.w.signum())
+    }
+
+    /// Returns a vector with the reciprocal of each component.
+    pub fn recip(self) -> Self
+    where T: Float {
+        return Self::new(self.x.recip(), self.y.recip(), self.z.recip(), self.w.recip())
+    }
+
+    /// Returns a vector with the floor of each component.
+    pub fn floor(self) -> Self
+    where T: Float {
+        return Self::new(self.x.floor(), self.y.floor(), self.z.floor(), self.w.floor())
+    }
+
+    /// Returns a vector with the ceil of each component.
+    pub fn ceil(self) -> Self
+    where T: Float {
+        return Self::new(self.x.ceil(), self.y.ceil(), self.z.ceil(), self.w.ceil())
+    }
+
+    /// Returns a vector with the round of each component.
+    pub fn round(self) -> Self
+    where T: Float {
+        return Self::new(self.x.round(), self.y.round(), self.z.round(), self.w.round())
+    }
+
+    /// Returns a vector with the fractional part of each component.
+    pub fn fract(self) -> Self
+    where T: Float {
+        return Self::new(self.x.fract(), self.y.fract(), self.z.fract(), self.w.fract())
     }
 
     /// Returns true if any component is NaN.
@@ -133,13 +212,13 @@ impl<T> Vec4<T> {
 
     /// Returns the sum of all components.
     pub fn sum(self) -> T
-    where T: Add<Output = T> + Copy {
+    where T: Add<Output = T> {
         return self.x + self.y + self.z + self.w
     }
 
     /// Returns the product of all components.
     pub fn product(self) -> T
-    where T: Mul<Output = T> + Copy {
+    where T: Mul<Output = T> {
         return self.x * self.y * self.z * self.w
     }
 
@@ -165,28 +244,28 @@ impl<T> Vec4<T> {
 
     /// Returns true if any component is zero.
     pub fn any_zero(self) -> bool
-    where T: PartialEq + Copy + num_traits::Zero {
+    where T: PartialEq + Zero {
         return self.x.is_zero() || self.y.is_zero() || self.z.is_zero() || self.w.is_zero()
     }
 
     /// Returns true if all components are zero.
     pub fn all_zero(self) -> bool
-    where T: PartialEq + Copy + num_traits::Zero {
+    where T: PartialEq + Zero {
         return self.x.is_zero() && self.y.is_zero() && self.z.is_zero() && self.w.is_zero()
     }
 
     /// Reflects the vector about a normal.
     pub fn reflect(self, normal: Vec4<T>) -> Self
-    where T: Float + Mul<Output = T> + Sub<Output = T> + Add<Output = T> {
-        return self - normal * (T::from(2.0).unwrap() * self.dot(normal))
+    where T: Copy + From<f32> + Mul<Output = T> + Sub<Output = T> + Add<Output = T> {
+        return self - normal * (T::from(2.0) * self.dot(normal))
     }
 
     /// Projects this vector onto another.
     pub fn project_onto(self, other: Vec4<T>) -> Self
-    where T: Float + Mul<Output = T> + Div<Output = T> + Add<Output = T> {
+    where T: Copy + Zero + PartialEq + Mul<Output = T> + Div<Output = T> + Add<Output = T> {
         let denom = other.length_squared();
         if denom.is_zero() {
-            return Self::splat(T::zero())
+            return Self::zero()
         } else {
             return other * (self.dot(other) / denom)
         }
@@ -342,6 +421,15 @@ impl<T: Copy + Sub<Output = T>> SubAssign<Vec4<T>> for Vec4<T> {
         self.y = self.y - rhs.y;
         self.z = self.z - rhs.z;
         self.w = self.w - rhs.w;
+    }
+}
+
+// -Vec4<T>
+impl<T: Neg<Output = T>> Neg for Vec4<T> {
+    type Output = Vec4<T>;
+
+    fn neg(self) -> Self::Output {
+        return Vec4::new(-self.x, -self.y, -self.z, -self.w)
     }
 }
 
