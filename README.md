@@ -27,9 +27,9 @@ All dependencies are optional:
 
 ```toml
 [dependencies]
-wgm = "0.0.7"
+wgm = "1.0.0"
 # or with features:
-wgm = { version = "0.0.7", features = ["swizzle", "serde"] }
+wgm = { version = "1.0.0", features = ["swizzle", "serde"] }
 ```
 
 ```rust
