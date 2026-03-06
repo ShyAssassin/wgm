@@ -2,7 +2,7 @@
 name = "wgm"
 license = "MIT"
 edition = "2021"
-version = "1.0.0"
+version = "1.0.1"
 categories = ["mathematics", "game-development"]
 repository = "https://github.com/ShyAssassin/wgm"
 keywords = ["gamedev", "math", "vector", "matrix"]
