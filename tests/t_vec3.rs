@@ -1,232 +1,627 @@
-use wgm::Vec3;
-use glam::Vec3 as GlamVec3;
+use wgm::{Vec2, Vec3};
+
+const EPSILON: f32 = 1e-5;
+
+fn approx_eq(a: f32, b: f32) -> bool {
+    return (a - b).abs() < EPSILON;
+}
+
+fn vec3_approx_eq(a: Vec3<f32>, b: Vec3<f32>) -> bool {
+    return approx_eq(a.x, b.x) && approx_eq(a.y, b.y) && approx_eq(a.z, b.z);
+}
+
+fn gv3(v: Vec3<f32>) -> glam::Vec3 {
+    return glam::Vec3::new(v.x, v.y, v.z);
+}
+
+fn wv3(v: glam::Vec3) -> Vec3<f32> {
+    return Vec3::new(v.x, v.y, v.z);
+}
+
+// ---- Construction ----
 
 #[test]
-fn vec3_length() {
-    let v = Vec3::new(3.0f32, 4.0, 5.0);
-    let glam_v = GlamVec3::new(3.0, 4.0, 5.0);
-    assert!((v.length() - glam_v.length()).abs() < 1e-6);
+fn new() {
+    let v = Vec3::new(1.0f32, 2.0, 3.0);
+    let g = glam::Vec3::new(1.0, 2.0, 3.0);
+    assert!(approx_eq(v.x, g.x));
+    assert!(approx_eq(v.y, g.y));
+    assert!(approx_eq(v.z, g.z));
 }
 
 #[test]
-fn vec3_length_squared() {
-    let v = Vec3::new(3.0f32, 4.0, 5.0);
-    let glam_v = GlamVec3::new(3.0, 4.0, 5.0);
-    assert!((v.length_squared() - glam_v.length_squared()).abs() < 1e-6);
+fn splat() {
+    let v = Vec3::splat(5.0f32);
+    let g = glam::Vec3::splat(5.0);
+    assert!(vec3_approx_eq(v, wv3(g)));
 }
 
 #[test]
-fn vec3_distance() {
+fn zero() {
+    let v = Vec3::<f32>::zero();
+    let g = glam::Vec3::ZERO;
+    assert!(vec3_approx_eq(v, wv3(g)));
+}
+
+#[test]
+fn one() {
+    let v = Vec3::<f32>::one();
+    let g = glam::Vec3::ONE;
+    assert!(vec3_approx_eq(v, wv3(g)));
+}
+
+#[test]
+fn unit_x() {
+    let v = Vec3::<f32>::unit_x();
+    let g = glam::Vec3::X;
+    assert!(vec3_approx_eq(v, wv3(g)));
+}
+
+#[test]
+fn unit_y() {
+    let v = Vec3::<f32>::unit_y();
+    let g = glam::Vec3::Y;
+    assert!(vec3_approx_eq(v, wv3(g)));
+}
+
+#[test]
+fn unit_z() {
+    let v = Vec3::<f32>::unit_z();
+    let g = glam::Vec3::Z;
+    assert!(vec3_approx_eq(v, wv3(g)));
+}
+
+// ---- Geometry ----
+
+#[test]
+fn length() {
+    let v = Vec3::new(1.0f32, 2.0, 3.0);
+    let g = glam::Vec3::new(1.0, 2.0, 3.0);
+    assert!(approx_eq(v.length(), g.length()));
+}
+
+#[test]
+fn length_squared() {
+    let v = Vec3::new(1.0f32, 2.0, 3.0);
+    let g = glam::Vec3::new(1.0, 2.0, 3.0);
+    assert!(approx_eq(v.length_squared(), g.length_squared()));
+}
+
+#[test]
+fn distance() {
     let a = Vec3::new(1.0f32, 2.0, 3.0);
     let b = Vec3::new(4.0, 6.0, 8.0);
-    let glam_a = GlamVec3::new(1.0, 2.0, 3.0);
-    let glam_b = GlamVec3::new(4.0, 6.0, 8.0);
-    assert!((a.distance(b) - glam_a.distance(glam_b)).abs() < 1e-6);
+    let ga = glam::Vec3::new(1.0, 2.0, 3.0);
+    let gb = glam::Vec3::new(4.0, 6.0, 8.0);
+    assert!(approx_eq(a.distance(b), ga.distance(gb)));
 }
 
 #[test]
-fn vec3_normalize() {
-    let v = Vec3::new(3.0f32, 4.0, 5.0);
-    let glam_v = GlamVec3::new(3.0, 4.0, 5.0);
-    let n = v.normalize();
-    let glam_n = glam_v.normalize();
-    assert!((n.x - glam_n.x).abs() < 1e-6);
-    assert!((n.y - glam_n.y).abs() < 1e-6);
-    assert!((n.z - glam_n.z).abs() < 1e-6);
-}
-
-#[test]
-fn vec3_dot() {
+fn distance_squared() {
     let a = Vec3::new(1.0f32, 2.0, 3.0);
-    let b = Vec3::new(3.0, 4.0, 5.0);
-    let glam_a = GlamVec3::new(1.0, 2.0, 3.0);
-    let glam_b = GlamVec3::new(3.0, 4.0, 5.0);
-    assert!((a.dot(b) - glam_a.dot(glam_b)).abs() < 1e-6);
+    let b = Vec3::new(4.0, 6.0, 8.0);
+    let ga = glam::Vec3::new(1.0, 2.0, 3.0);
+    let gb = glam::Vec3::new(4.0, 6.0, 8.0);
+    assert!(approx_eq(a.distance_squared(b), ga.distance_squared(gb)));
 }
 
 #[test]
-fn vec3_lerp() {
+fn normalize() {
+    let v = Vec3::new(1.0f32, 2.0, 3.0);
+    let g = glam::Vec3::new(1.0, 2.0, 3.0);
+    assert!(vec3_approx_eq(v.normalize(), wv3(g.normalize())));
+}
+
+#[test]
+fn dot() {
     let a = Vec3::new(1.0f32, 2.0, 3.0);
-    let b = Vec3::new(3.0, 4.0, 5.0);
-    let glam_a = GlamVec3::new(1.0, 2.0, 3.0);
-    let glam_b = GlamVec3::new(3.0, 4.0, 5.0);
-    let t = 0.25f32;
-    let l = a.lerp(b, t);
-    let glam_l = glam_a.lerp(glam_b, t);
-    assert!((l.x - glam_l.x).abs() < 1e-6);
-    assert!((l.y - glam_l.y).abs() < 1e-6);
-    assert!((l.z - glam_l.z).abs() < 1e-6);
+    let b = Vec3::new(4.0, 5.0, 6.0);
+    let ga = glam::Vec3::new(1.0, 2.0, 3.0);
+    let gb = glam::Vec3::new(4.0, 5.0, 6.0);
+    assert!(approx_eq(a.dot(b), ga.dot(gb)));
 }
 
 #[test]
-fn vec3_new_and_splat() {
-    let v = Vec3::new(1.0f32, 2.0, 3.0);
-    let glam_v = GlamVec3::new(1.0, 2.0, 3.0);
-    assert_eq!(v.x, glam_v.x);
-    assert_eq!(v.y, glam_v.y);
-    assert_eq!(v.z, glam_v.z);
-
-    let s = Vec3::splat(5.0f32);
-    let glam_s = GlamVec3::splat(5.0);
-    assert_eq!(s.x, glam_s.x);
-    assert_eq!(s.y, glam_s.y);
-    assert_eq!(s.z, glam_s.z);
-}
-
-#[test]
-fn vec3_extend_truncate() {
-    let v = Vec3::new(1.0f32, 2.0, 3.0);
-    let ext = v.extend(4.0);
-    assert_eq!(ext.x, 1.0);
-    assert_eq!(ext.y, 2.0);
-    assert_eq!(ext.z, 3.0);
-    assert_eq!(ext.w, 4.0);
-
-    let t = v.truncate();
-    assert_eq!(t.x, 1.0);
-    assert_eq!(t.y, 2.0);
-}
-
-#[test]
-fn vec3_normalize_between() {
-    let v = Vec3::new(3.0f32, 4.0, 5.0);
-    let glam_v = GlamVec3::new(3.0, 4.0, 5.0);
-    let n = v.normalize_between(1.0, 2.0);
-    let glam_n = glam_v.normalize() * (2.0 - 1.0) + 1.0;
-    assert!((n.x - glam_n.x).abs() < 1e-6);
-    assert!((n.y - glam_n.y).abs() < 1e-6);
-    assert!((n.z - glam_n.z).abs() < 1e-6);
-}
-
-#[test]
-fn vec3_min_max_clamp() {
-    let a = Vec3::new(1.0f32, 5.0, 3.0);
-    let b = Vec3::new(2.0, 4.0, 6.0);
-    let glam_a = GlamVec3::new(1.0, 5.0, 3.0);
-    let glam_b = GlamVec3::new(2.0, 4.0, 6.0);
-    let min = a.min(b);
-    let glam_min = glam_a.min(glam_b);
-    assert_eq!(min.x, glam_min.x);
-    assert_eq!(min.y, glam_min.y);
-    assert_eq!(min.z, glam_min.z);
-
-    let max = a.max(b);
-    let glam_max = glam_a.max(glam_b);
-    assert_eq!(max.x, glam_max.x);
-    assert_eq!(max.y, glam_max.y);
-    assert_eq!(max.z, glam_max.z);
-
-    let clamp = a.clamp(Vec3::splat(2.0), Vec3::splat(6.0));
-    let glam_clamp = glam_a.clamp(GlamVec3::splat(2.0), GlamVec3::splat(6.0));
-    assert_eq!(clamp.x, glam_clamp.x);
-    assert_eq!(clamp.y, glam_clamp.y);
-    assert_eq!(clamp.z, glam_clamp.z);
-}
-
-#[test]
-fn vec3_abs() {
-    let v = Vec3::new(-1.0f32, 2.0, -3.0);
-    let glam_v = GlamVec3::new(-1.0, 2.0, -3.0);
-    let abs = v.abs();
-    let glam_abs = glam_v.abs();
-    assert_eq!(abs.x, glam_abs.x);
-    assert_eq!(abs.y, glam_abs.y);
-    assert_eq!(abs.z, glam_abs.z);
-}
-
-#[test]
-fn vec3_is_nan_finite_infinite() {
-    let v = Vec3::new(f32::NAN, 2.0, 3.0);
-    assert!(v.is_nan());
-
-    let v = Vec3::new(1.0f32, 2.0, 3.0);
-    assert!(v.is_finite());
-
-    let v = Vec3::new(f32::INFINITY, 2.0, 3.0);
-    assert!(v.is_infinite());
-}
-
-#[test]
-fn vec3_sum_product_min_max_element() {
-    let v = Vec3::new(1.0f32, 2.0, 3.0);
-    assert_eq!(v.sum(), 6.0);
-    assert_eq!(v.product(), 6.0);
-    assert_eq!(v.min_element(), 1.0);
-    assert_eq!(v.max_element(), 3.0);
-}
-
-#[test]
-fn vec3_any_all_zero() {
-    let v = Vec3::new(0.0f32, 2.0, 3.0);
-    assert!(v.any_zero());
-
-    let v = Vec3::new(0.0f32, 0.0, 0.0);
-    assert!(v.all_zero());
-}
-
-#[test]
-fn vec3_reflect() {
-    let v = Vec3::new(1.0f32, -1.0, 0.0);
-    let n = Vec3::new(0.0, 1.0, 0.0);
-    let glam_v = GlamVec3::new(1.0, -1.0, 0.0);
-    let glam_n = GlamVec3::new(0.0, 1.0, 0.0);
-    let r = v.reflect(n);
-    let glam_r = glam_v.reflect(glam_n);
-    assert!((r.x - glam_r.x).abs() < 1e-6);
-    assert!((r.y - glam_r.y).abs() < 1e-6);
-    assert!((r.z - glam_r.z).abs() < 1e-6);
-}
-
-#[test]
-fn vec3_project_onto() {
-    let v = Vec3::new(2.0f32, 3.0, 4.0);
-    let onto = Vec3::new(1.0, 0.0, 0.0);
-    let glam_v = GlamVec3::new(2.0, 3.0, 4.0);
-    let glam_onto = GlamVec3::new(1.0, 0.0, 0.0);
-    let p = v.project_onto(onto);
-    let glam_p = glam_v.project_onto(glam_onto);
-    assert!((p.x - glam_p.x).abs() < 1e-6);
-    assert!((p.y - glam_p.y).abs() < 1e-6);
-    assert!((p.z - glam_p.z).abs() < 1e-6);
-}
-
-#[test]
-fn vec3_cross() {
+fn cross() {
     let a = Vec3::new(1.0f32, 0.0, 0.0);
     let b = Vec3::new(0.0, 1.0, 0.0);
-    let glam_a = GlamVec3::new(1.0, 0.0, 0.0);
-    let glam_b = GlamVec3::new(0.0, 1.0, 0.0);
-    let c = a.cross(b);
-    let glam_c = glam_a.cross(glam_b);
-    assert!((c.x - glam_c.x).abs() < 1e-6);
-    assert!((c.y - glam_c.y).abs() < 1e-6);
-    assert!((c.z - glam_c.z).abs() < 1e-6);
+    let ga = glam::Vec3::new(1.0, 0.0, 0.0);
+    let gb = glam::Vec3::new(0.0, 1.0, 0.0);
+    assert!(vec3_approx_eq(a.cross(b), wv3(ga.cross(gb))));
 }
 
 #[test]
-fn vec3_conversions() {
-    let arr: [f32; 3] = Vec3::new(1.0, 2.0, 3.0).into();
-    assert_eq!(arr, [1.0, 2.0, 3.0]);
-    let v: Vec3<f32> = [1.0, 2.0, 3.0].into();
-    assert_eq!(v, Vec3::new(1.0, 2.0, 3.0));
-    let tuple: (f32, f32, f32) = v.into();
-    assert_eq!(tuple, (1.0, 2.0, 3.0));
-    let v2: Vec3<f32> = (1.0, 2.0, 3.0).into();
-    assert_eq!(v2, Vec3::new(1.0, 2.0, 3.0));
-}
-
-#[test]
-fn vec3_arithmetic() {
-    let a = Vec3::new(1.0f32, 2.0, 3.0);
+fn cross_arbitrary() {
+    let a = Vec3::new(2.0f32, 3.0, 4.0);
     let b = Vec3::new(5.0, 6.0, 7.0);
+    let ga = glam::Vec3::new(2.0, 3.0, 4.0);
+    let gb = glam::Vec3::new(5.0, 6.0, 7.0);
+    assert!(vec3_approx_eq(a.cross(b), wv3(ga.cross(gb))));
+}
 
-    assert_eq!(a * 2.0, Vec3::new(2.0, 4.0, 6.0));
-    assert_eq!(a / 2.0, Vec3::new(0.5, 1.0, 1.5));
-    assert_eq!(a + 2.0, Vec3::new(3.0, 4.0, 5.0));
-    assert_eq!(a - 1.0, Vec3::new(0.0, 1.0, 2.0));
+#[test]
+fn angle_between() {
+    let a = Vec3::new(1.0f32, 0.0, 0.0);
+    let b = Vec3::new(0.0, 1.0, 0.0);
+    let ga = glam::Vec3::new(1.0, 0.0, 0.0);
+    let gb = glam::Vec3::new(0.0, 1.0, 0.0);
+    assert!(approx_eq(a.angle_between(b).inner(), ga.angle_between(gb)));
+}
 
-    assert_eq!(a * b, Vec3::new(5.0, 12.0, 21.0));
-    assert_eq!(b / a, Vec3::new(5.0, 3.0, 7.0/3.0));
-    assert_eq!(a + b, Vec3::new(6.0, 8.0, 10.0));
-    assert_eq!(b - a, Vec3::new(4.0, 4.0, 4.0));
+#[test]
+fn angle_between_arbitrary() {
+    let a = Vec3::new(1.0f32, 2.0, 3.0);
+    let b = Vec3::new(-1.0, 1.0, 2.0);
+    let ga = glam::Vec3::new(1.0, 2.0, 3.0);
+    let gb = glam::Vec3::new(-1.0, 1.0, 2.0);
+    assert!(approx_eq(a.angle_between(b).inner(), ga.angle_between(gb)));
+}
+
+// ---- Interpolation ----
+
+#[test]
+fn lerp() {
+    let a = Vec3::new(0.0f32, 0.0, 0.0);
+    let b = Vec3::new(10.0, 20.0, 30.0);
+    let ga = glam::Vec3::new(0.0, 0.0, 0.0);
+    let gb = glam::Vec3::new(10.0, 20.0, 30.0);
+    assert!(vec3_approx_eq(a.lerp(b, 0.5), wv3(ga.lerp(gb, 0.5))));
+}
+
+#[test]
+fn lerp_endpoints() {
+    let a = Vec3::new(1.0f32, 2.0, 3.0);
+    let b = Vec3::new(4.0, 5.0, 6.0);
+    let ga = glam::Vec3::new(1.0, 2.0, 3.0);
+    let gb = glam::Vec3::new(4.0, 5.0, 6.0);
+    assert!(vec3_approx_eq(a.lerp(b, 0.0), wv3(ga.lerp(gb, 0.0))));
+    assert!(vec3_approx_eq(a.lerp(b, 1.0), wv3(ga.lerp(gb, 1.0))));
+}
+
+// ---- Component-wise math ----
+
+#[test]
+fn min() {
+    let a = Vec3::new(1.0f32, 5.0, 3.0);
+    let b = Vec3::new(4.0, 2.0, 6.0);
+    let ga = glam::Vec3::new(1.0, 5.0, 3.0);
+    let gb = glam::Vec3::new(4.0, 2.0, 6.0);
+    assert!(vec3_approx_eq(a.min(b), wv3(ga.min(gb))));
+}
+
+#[test]
+fn max() {
+    let a = Vec3::new(1.0f32, 5.0, 3.0);
+    let b = Vec3::new(4.0, 2.0, 6.0);
+    let ga = glam::Vec3::new(1.0, 5.0, 3.0);
+    let gb = glam::Vec3::new(4.0, 2.0, 6.0);
+    assert!(vec3_approx_eq(a.max(b), wv3(ga.max(gb))));
+}
+
+#[test]
+fn clamp() {
+    let v = Vec3::new(-1.0f32, 5.0, 2.0);
+    let min = Vec3::new(0.0, 0.0, 0.0);
+    let max = Vec3::new(3.0, 3.0, 3.0);
+    let g = glam::Vec3::new(-1.0, 5.0, 2.0);
+    let gmin = glam::Vec3::new(0.0, 0.0, 0.0);
+    let gmax = glam::Vec3::new(3.0, 3.0, 3.0);
+    assert!(vec3_approx_eq(v.clamp(min, max), wv3(g.clamp(gmin, gmax))));
+}
+
+#[test]
+fn abs() {
+    let v = Vec3::new(-3.0f32, -4.0, -5.0);
+    let g = glam::Vec3::new(-3.0, -4.0, -5.0);
+    assert!(vec3_approx_eq(v.abs(), wv3(g.abs())));
+}
+
+#[test]
+fn signum() {
+    let v = Vec3::new(-3.0f32, 4.0, 0.0);
+    let g = glam::Vec3::new(-3.0, 4.0, 0.0);
+    assert!(vec3_approx_eq(v.signum(), wv3(g.signum())));
+}
+
+#[test]
+fn recip() {
+    let v = Vec3::new(2.0f32, 4.0, 8.0);
+    let g = glam::Vec3::new(2.0, 4.0, 8.0);
+    assert!(vec3_approx_eq(v.recip(), wv3(g.recip())));
+}
+
+#[test]
+fn floor() {
+    let v = Vec3::new(1.7f32, -2.3, 3.9);
+    let g = glam::Vec3::new(1.7, -2.3, 3.9);
+    assert!(vec3_approx_eq(v.floor(), wv3(g.floor())));
+}
+
+#[test]
+fn ceil() {
+    let v = Vec3::new(1.2f32, -2.8, 3.1);
+    let g = glam::Vec3::new(1.2, -2.8, 3.1);
+    assert!(vec3_approx_eq(v.ceil(), wv3(g.ceil())));
+}
+
+#[test]
+fn round() {
+    let v = Vec3::new(1.5f32, -2.5, 3.4);
+    let g = glam::Vec3::new(1.5, -2.5, 3.4);
+    assert!(vec3_approx_eq(v.round(), wv3(g.round())));
+}
+
+#[test]
+fn fract() {
+    let v = Vec3::new(1.7f32, -2.3, 3.9);
+    let g = glam::Vec3::new(1.7, -2.3, 3.9);
+    assert!(vec3_approx_eq(v.fract(), wv3(g.fract())));
+}
+
+#[test]
+fn powf() {
+    let v = Vec3::new(2.0f32, 3.0, 4.0);
+    let g = glam::Vec3::new(2.0, 3.0, 4.0);
+    assert!(vec3_approx_eq(v.powf(2.0), wv3(g.powf(2.0))));
+}
+
+// ---- Reduction ----
+
+#[test]
+fn sum() {
+    let v = Vec3::new(1.0f32, 2.0, 3.0);
+    let g = glam::Vec3::new(1.0, 2.0, 3.0);
+    assert!(approx_eq(v.sum(), g.element_sum()));
+}
+
+#[test]
+fn product() {
+    let v = Vec3::new(2.0f32, 3.0, 4.0);
+    let g = glam::Vec3::new(2.0, 3.0, 4.0);
+    assert!(approx_eq(v.product(), g.element_product()));
+}
+
+#[test]
+fn min_element() {
+    let v = Vec3::new(3.0f32, 1.0, 5.0);
+    let g = glam::Vec3::new(3.0, 1.0, 5.0);
+    assert!(approx_eq(v.min_element(), g.min_element()));
+}
+
+#[test]
+fn max_element() {
+    let v = Vec3::new(3.0f32, 7.0, 5.0);
+    let g = glam::Vec3::new(3.0, 7.0, 5.0);
+    assert!(approx_eq(v.max_element(), g.max_element()));
+}
+
+// ---- Reflection / Projection ----
+
+#[test]
+fn project_onto() {
+    let v = Vec3::new(3.0f32, 4.0, 0.0);
+    let onto = Vec3::new(1.0, 0.0, 0.0);
+    let g = glam::Vec3::new(3.0, 4.0, 0.0);
+    let gonto = glam::Vec3::new(1.0, 0.0, 0.0);
+    assert!(vec3_approx_eq(v.project_onto(onto), wv3(g.project_onto(gonto))));
+}
+
+#[test]
+fn project_onto_diagonal() {
+    let v = Vec3::new(3.0f32, 4.0, 5.0);
+    let onto = Vec3::new(1.0, 1.0, 1.0);
+    let g = glam::Vec3::new(3.0, 4.0, 5.0);
+    let gonto = glam::Vec3::new(1.0, 1.0, 1.0);
+    assert!(vec3_approx_eq(v.project_onto(onto), wv3(g.project_onto(gonto))));
+}
+
+#[test]
+fn reject_from() {
+    let v = Vec3::new(3.0f32, 4.0, 0.0);
+    let from = Vec3::new(1.0, 0.0, 0.0);
+    let g = glam::Vec3::new(3.0, 4.0, 0.0);
+    let gfrom = glam::Vec3::new(1.0, 0.0, 0.0);
+    assert!(vec3_approx_eq(v.reject_from(from), wv3(g.reject_from(gfrom))));
+}
+
+#[test]
+fn reject_from_diagonal() {
+    let v = Vec3::new(3.0f32, 4.0, 5.0);
+    let from = Vec3::new(1.0, 1.0, 1.0);
+    let g = glam::Vec3::new(3.0, 4.0, 5.0);
+    let gfrom = glam::Vec3::new(1.0, 1.0, 1.0);
+    assert!(vec3_approx_eq(v.reject_from(from), wv3(g.reject_from(gfrom))));
+}
+
+#[test]
+fn reflect() {
+    let v = Vec3::new(1.0f32, -1.0, 0.0);
+    let n = Vec3::new(0.0, 1.0, 0.0);
+    // reflect(v,n) = v - 2*dot(v,n)*n
+    let expected = gv3(v) - 2.0 * gv3(v).dot(gv3(n)) * gv3(n);
+    assert!(vec3_approx_eq(v.reflect(n), wv3(expected)));
+}
+
+// ---- Extend / Truncate ----
+
+#[test]
+fn extend() {
+    let v = Vec3::new(1.0f32, 2.0, 3.0);
+    let g = glam::Vec3::new(1.0, 2.0, 3.0);
+    let ext = v.extend(4.0);
+    let gext = g.extend(4.0);
+    assert!(approx_eq(ext.x, gext.x));
+    assert!(approx_eq(ext.y, gext.y));
+    assert!(approx_eq(ext.z, gext.z));
+    assert!(approx_eq(ext.w, gext.w));
+}
+
+#[test]
+fn truncate() {
+    let v = Vec3::new(1.0f32, 2.0, 3.0);
+    let g = glam::Vec3::new(1.0, 2.0, 3.0);
+    let t = v.truncate();
+    let gt = g.truncate();
+    assert!(approx_eq(t.x, gt.x));
+    assert!(approx_eq(t.y, gt.y));
+}
+
+// ---- Mul-Add ----
+
+#[test]
+fn mul_add() {
+    let v = Vec3::new(1.0f32, 2.0, 3.0);
+    let a = Vec3::new(4.0, 5.0, 6.0);
+    let b = Vec3::new(7.0, 8.0, 9.0);
+    let g = glam::Vec3::new(1.0, 2.0, 3.0);
+    let ga = glam::Vec3::new(4.0, 5.0, 6.0);
+    let gb = glam::Vec3::new(7.0, 8.0, 9.0);
+    assert!(vec3_approx_eq(v.mul_add(a, b), wv3(g.mul_add(ga, gb))));
+}
+
+// ---- Operators ----
+
+#[test]
+fn add() {
+    let a = Vec3::new(1.0f32, 2.0, 3.0);
+    let b = Vec3::new(4.0, 5.0, 6.0);
+    let ga = glam::Vec3::new(1.0, 2.0, 3.0);
+    let gb = glam::Vec3::new(4.0, 5.0, 6.0);
+    assert!(vec3_approx_eq(a + b, wv3(ga + gb)));
+}
+
+#[test]
+fn sub() {
+    let a = Vec3::new(5.0f32, 6.0, 7.0);
+    let b = Vec3::new(1.0, 2.0, 3.0);
+    let ga = glam::Vec3::new(5.0, 6.0, 7.0);
+    let gb = glam::Vec3::new(1.0, 2.0, 3.0);
+    assert!(vec3_approx_eq(a - b, wv3(ga - gb)));
+}
+
+#[test]
+fn mul() {
+    let a = Vec3::new(2.0f32, 3.0, 4.0);
+    let b = Vec3::new(5.0, 6.0, 7.0);
+    let ga = glam::Vec3::new(2.0, 3.0, 4.0);
+    let gb = glam::Vec3::new(5.0, 6.0, 7.0);
+    assert!(vec3_approx_eq(a * b, wv3(ga * gb)));
+}
+
+#[test]
+fn div() {
+    let a = Vec3::new(10.0f32, 20.0, 30.0);
+    let b = Vec3::new(2.0, 5.0, 6.0);
+    let ga = glam::Vec3::new(10.0, 20.0, 30.0);
+    let gb = glam::Vec3::new(2.0, 5.0, 6.0);
+    assert!(vec3_approx_eq(a / b, wv3(ga / gb)));
+}
+
+#[test]
+fn mul_scalar() {
+    let v = Vec3::new(2.0f32, 3.0, 4.0);
+    let g = glam::Vec3::new(2.0, 3.0, 4.0);
+    assert!(vec3_approx_eq(v * 5.0, wv3(g * 5.0)));
+}
+
+#[test]
+fn div_scalar() {
+    let v = Vec3::new(10.0f32, 20.0, 30.0);
+    let g = glam::Vec3::new(10.0, 20.0, 30.0);
+    assert!(vec3_approx_eq(v / 5.0, wv3(g / 5.0)));
+}
+
+#[test]
+fn neg() {
+    let v = Vec3::new(1.0f32, -2.0, 3.0);
+    let g = glam::Vec3::new(1.0, -2.0, 3.0);
+    assert!(vec3_approx_eq(-v, wv3(-g)));
+}
+
+// ---- Assign Ops ----
+
+#[test]
+fn add_assign() {
+    let mut v = Vec3::new(1.0f32, 2.0, 3.0);
+    v += Vec3::new(4.0, 5.0, 6.0);
+    let mut g = glam::Vec3::new(1.0, 2.0, 3.0);
+    g += glam::Vec3::new(4.0, 5.0, 6.0);
+    assert!(vec3_approx_eq(v, wv3(g)));
+}
+
+#[test]
+fn sub_assign() {
+    let mut v = Vec3::new(5.0f32, 6.0, 7.0);
+    v -= Vec3::new(1.0, 2.0, 3.0);
+    let mut g = glam::Vec3::new(5.0, 6.0, 7.0);
+    g -= glam::Vec3::new(1.0, 2.0, 3.0);
+    assert!(vec3_approx_eq(v, wv3(g)));
+}
+
+#[test]
+fn mul_assign() {
+    let mut v = Vec3::new(2.0f32, 3.0, 4.0);
+    v *= 4.0f32;
+    let mut g = glam::Vec3::new(2.0, 3.0, 4.0);
+    g *= 4.0;
+    assert!(vec3_approx_eq(v, wv3(g)));
+}
+
+#[test]
+fn div_assign() {
+    let mut v = Vec3::new(10.0f32, 20.0, 30.0);
+    v /= 5.0f32;
+    let mut g = glam::Vec3::new(10.0, 20.0, 30.0);
+    g /= 5.0;
+    assert!(vec3_approx_eq(v, wv3(g)));
+}
+
+// ---- Boolean checks ----
+
+#[test]
+fn is_nan() {
+    assert!(Vec3::new(f32::NAN, 0.0, 0.0).is_nan());
+    assert!(!Vec3::new(1.0f32, 2.0, 3.0).is_nan());
+}
+
+#[test]
+fn is_finite() {
+    assert!(Vec3::new(1.0f32, 2.0, 3.0).is_finite());
+    assert!(!Vec3::new(f32::INFINITY, 0.0, 0.0).is_finite());
+}
+
+#[test]
+fn is_infinite() {
+    assert!(!Vec3::new(1.0f32, 2.0, 3.0).is_infinite());
+    assert!(Vec3::new(f32::INFINITY, 0.0, 0.0).is_infinite());
+}
+
+#[test]
+fn any_zero() {
+    assert!(Vec3::new(0.0f32, 1.0, 2.0).any_zero());
+    assert!(!Vec3::new(1.0f32, 2.0, 3.0).any_zero());
+}
+
+#[test]
+fn all_zero() {
+    assert!(Vec3::new(0.0f32, 0.0, 0.0).all_zero());
+    assert!(!Vec3::new(0.0f32, 0.0, 1.0).all_zero());
+}
+
+// ---- Conversions ----
+
+#[test]
+fn to_array() {
+    let v = Vec3::new(1.0f32, 2.0, 3.0);
+    let g = glam::Vec3::new(1.0, 2.0, 3.0);
+    assert_eq!(v.to_array(), g.to_array());
+}
+
+#[test]
+fn from_array() {
+    let arr = [1.0f32, 2.0, 3.0];
+    let v: Vec3<f32> = arr.into();
+    let g = glam::Vec3::from_array(arr);
+    assert!(vec3_approx_eq(v, wv3(g)));
+}
+
+#[test]
+fn from_tuple() {
+    let t = (1.0f32, 2.0, 3.0);
+    let v: Vec3<f32> = t.into();
+    let g = glam::Vec3::from(t);
+    assert!(vec3_approx_eq(v, wv3(g)));
+}
+
+#[test]
+fn into_tuple() {
+    let v = Vec3::new(1.0f32, 2.0, 3.0);
+    let t: (f32, f32, f32) = v.into();
+    let g = glam::Vec3::new(1.0, 2.0, 3.0);
+    let gt: (f32, f32, f32) = g.into();
+    assert_eq!(t, gt);
+}
+
+// ---- Index ----
+
+#[test]
+fn index() {
+    let v = Vec3::new(1.0f32, 2.0, 3.0);
+    let g = glam::Vec3::new(1.0, 2.0, 3.0);
+    assert!(approx_eq(v[0], g[0]));
+    assert!(approx_eq(v[1], g[1]));
+    assert!(approx_eq(v[2], g[2]));
+}
+
+#[test]
+fn index_mut() {
+    let mut v = Vec3::new(1.0f32, 2.0, 3.0);
+    v[0] = 9.0;
+    v[1] = 8.0;
+    v[2] = 7.0;
+    let mut g = glam::Vec3::new(1.0, 2.0, 3.0);
+    g[0] = 9.0;
+    g[1] = 8.0;
+    g[2] = 7.0;
+    assert!(vec3_approx_eq(v, wv3(g)));
+}
+
+// ---- Display ----
+
+#[test]
+fn display() {
+    let v = Vec3::new(1.0f32, 2.0, 3.0);
+    let s = format!("{}", v);
+    assert!(s.contains("Vec3"));
+}
+
+// ---- Comprehensive comparisons ----
+
+#[test]
+fn comprehensive_cross_vs_glam() {
+    let pairs = [
+        (Vec3::new(1.0f32, 0.0, 0.0), Vec3::new(0.0, 1.0, 0.0)),
+        (Vec3::new(2.0, 3.0, 4.0), Vec3::new(5.0, 6.0, 7.0)),
+        (Vec3::new(-1.0, 2.0, -3.0), Vec3::new(4.0, -5.0, 6.0)),
+    ];
+    for (a, b) in pairs {
+        let c = a.cross(b);
+        let gc = gv3(a).cross(gv3(b));
+        assert!(vec3_approx_eq(c, wv3(gc)));
+    }
+}
+
+#[test]
+fn comprehensive_dot_vs_glam() {
+    let pairs = [
+        (Vec3::new(1.0f32, 0.0, 0.0), Vec3::new(0.0, 1.0, 0.0)),
+        (Vec3::new(3.0, 4.0, 5.0), Vec3::new(-4.0, 3.0, 0.0)),
+        (Vec3::new(-1.0, -2.0, -3.0), Vec3::new(-4.0, -5.0, -6.0)),
+    ];
+    for (a, b) in pairs {
+        assert!(approx_eq(a.dot(b), gv3(a).dot(gv3(b))));
+    }
+}
+
+#[test]
+fn comprehensive_normalize_vs_glam() {
+    let vecs = [
+        Vec3::new(1.0f32, 0.0, 0.0),
+        Vec3::new(0.0, 1.0, 0.0),
+        Vec3::new(3.0, 4.0, 5.0),
+        Vec3::new(-7.0, 24.0, 0.0),
+    ];
+    for v in vecs {
+        assert!(vec3_approx_eq(v.normalize(), wv3(gv3(v).normalize())));
+    }
+}
+
+#[test]
+fn truncate_to_vec2() {
+    let v = Vec3::new(1.0f32, 2.0, 3.0);
+    let t: Vec2<f32> = v.truncate();
+    let g = glam::Vec3::new(1.0, 2.0, 3.0);
+    let gt = g.truncate();
+    assert!(approx_eq(t.x, gt.x));
+    assert!(approx_eq(t.y, gt.y));
 }
