@@ -1,7 +1,9 @@
+use core::fmt;
 use super::{Vec2, Vec3};
-use std::ops::{Add, Sub, Mul, Div, Neg};
-use num_traits::{Float, Signed, One, Zero};
-use std::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
+use core::ops::{Index, IndexMut};
+use core::ops::{Add, Sub, Mul, Div, Neg};
+use core::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
+use num_traits::{Float, NumCast, Signed, One, Zero, float::FloatCore};
 
 #[repr(C)]
 #[derive(Debug)]
@@ -92,10 +94,14 @@ impl<T> Vec4<T> {
         return (self - other).length_squared()
     }
 
-    /// Normalize `self` within a range of 0 to 1.
+    /// Normalize `self` to unit length.
     pub fn normalize(self) -> Self
     where T: Float {
-        return self / self.length()
+        let len = self.length();
+        if len.is_zero() {
+            return self
+        }
+        return self / len
     }
 
     /// Normalize the vector within a range of `lower` to `upper`.
@@ -110,10 +116,15 @@ impl<T> Vec4<T> {
         return (self.x * rhs.x) + (self.y * rhs.y) + (self.z * rhs.z) + (self.w * rhs.w)
     }
 
-    /// Fused multiply-add. Computes `(self * a) + b`
+    /// Fused multiply-add. Computes `(self * a) + b` element-wise.
     pub fn mul_add(self, a: Vec4<T>, b: Vec4<T>) -> Self
     where T: Copy + Mul<Output = T> + Add<Output = T> {
-        return Self::new(self.x * a.x + b.x, self.y * a.y + b.y, self.z * a.z + b.z, self.w * a.w + b.w)
+        return Self::new(
+            self.x * a.x + b.x,
+            self.y * a.y + b.y,
+            self.z * a.z + b.z,
+            self.w * a.w + b.w,
+        )
     }
 
     /// Linearly interpolate between `self` and `other` by `t`.
@@ -122,7 +133,7 @@ impl<T> Vec4<T> {
         return self * (T::one() - t) + other * t
     }
 
-    /// Return the minimum of `self` and `other`.
+    /// Return the component-wise minimum of `self` and `other`.
     pub fn min(self, other: Vec4<T>) -> Self
     where T: PartialOrd + Copy {
         return Self {
@@ -133,7 +144,7 @@ impl<T> Vec4<T> {
         }
     }
 
-    /// Return the maximum of `self` and `other`.
+    /// Return the component-wise maximum of `self` and `other`.
     pub fn max(self, other: Vec4<T>) -> Self
     where T: PartialOrd + Copy {
         return Self {
@@ -144,7 +155,7 @@ impl<T> Vec4<T> {
         }
     }
 
-    /// Clamp `self` between `min` and `max`.
+    /// Clamp `self` between `min` and `max` component-wise.
     pub fn clamp(self, min: Vec4<T>, max: Vec4<T>) -> Self
     where T: PartialOrd + Copy {
         return self.max(min).min(max)
@@ -164,49 +175,55 @@ impl<T> Vec4<T> {
 
     /// Returns a vector with the reciprocal of each component.
     pub fn recip(self) -> Self
-    where T: Float {
+    where T: FloatCore {
         return Self::new(self.x.recip(), self.y.recip(), self.z.recip(), self.w.recip())
     }
 
     /// Returns a vector with the floor of each component.
     pub fn floor(self) -> Self
-    where T: Float {
+    where T: FloatCore {
         return Self::new(self.x.floor(), self.y.floor(), self.z.floor(), self.w.floor())
     }
 
     /// Returns a vector with the ceil of each component.
     pub fn ceil(self) -> Self
-    where T: Float {
+    where T: FloatCore {
         return Self::new(self.x.ceil(), self.y.ceil(), self.z.ceil(), self.w.ceil())
     }
 
     /// Returns a vector with the round of each component.
     pub fn round(self) -> Self
-    where T: Float {
+    where T: FloatCore {
         return Self::new(self.x.round(), self.y.round(), self.z.round(), self.w.round())
     }
 
     /// Returns a vector with the fractional part of each component.
     pub fn fract(self) -> Self
-    where T: Float {
+    where T: FloatCore {
         return Self::new(self.x.fract(), self.y.fract(), self.z.fract(), self.w.fract())
+    }
+
+    /// Returns a vector with each component raised to the given power.
+    pub fn powf(self, n: T) -> Self
+    where T: Float {
+        return Self::new(self.x.powf(n), self.y.powf(n), self.z.powf(n), self.w.powf(n))
     }
 
     /// Returns true if any component is NaN.
     pub fn is_nan(self) -> bool
-    where T: Float {
+    where T: FloatCore {
         return self.x.is_nan() || self.y.is_nan() || self.z.is_nan() || self.w.is_nan()
     }
 
     /// Returns true if all components are finite.
     pub fn is_finite(self) -> bool
-    where T: Float {
+    where T: FloatCore {
         return self.x.is_finite() && self.y.is_finite() && self.z.is_finite() && self.w.is_finite()
     }
 
     /// Returns true if any component is infinite.
     pub fn is_infinite(self) -> bool
-    where T: Float {
+    where T: FloatCore {
         return self.x.is_infinite() || self.y.is_infinite() || self.z.is_infinite() || self.w.is_infinite()
     }
 
@@ -256,18 +273,61 @@ impl<T> Vec4<T> {
 
     /// Reflects the vector about a normal.
     pub fn reflect(self, normal: Vec4<T>) -> Self
-    where T: Copy + From<f32> + Mul<Output = T> + Sub<Output = T> + Add<Output = T> {
-        return self - normal * (T::from(2.0) * self.dot(normal))
+    where T: Copy + NumCast + Mul<Output = T> + Add<Output = T> + Sub<Output = T> {
+        let two: T = NumCast::from(2.0f64).unwrap();
+        return self - normal * (two * self.dot(normal))
     }
 
     /// Projects this vector onto another.
     pub fn project_onto(self, other: Vec4<T>) -> Self
-    where T: Copy + Zero + PartialEq + Mul<Output = T> + Div<Output = T> + Add<Output = T> {
+    where T: Copy + Mul<Output = T> + Add<Output = T> + Div<Output = T> + Zero + PartialEq {
         let denom = other.length_squared();
         if denom.is_zero() {
             return Self::zero()
-        } else {
-            return other * (self.dot(other) / denom)
+        }
+        return other * (self.dot(other) / denom)
+    }
+
+    /// Rejects this vector from another (component perpendicular to `other`).
+    pub fn reject_from(self, other: Vec4<T>) -> Self
+    where T: Copy + Mul<Output = T> + Add<Output = T> + Sub<Output = T> + Div<Output = T> + Zero + PartialEq {
+        return self - self.project_onto(other)
+    }
+
+    /// Converts this vector to an array.
+    pub fn to_array(self) -> [T; 4] {
+        return [self.x, self.y, self.z, self.w]
+    }
+}
+
+impl<T: fmt::Display> fmt::Display for Vec4<T> {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        return write!(f, "Vec4({}, {}, {}, {})", self.x, self.y, self.z, self.w)
+    }
+}
+
+impl<T> Index<usize> for Vec4<T> {
+    type Output = T;
+
+    fn index(&self, index: usize) -> &Self::Output {
+        match index {
+            0 => return &self.x,
+            1 => return &self.y,
+            2 => return &self.z,
+            3 => return &self.w,
+            _ => panic!("index out of bounds: Vec4 has 4 components but index is {}", index),
+        }
+    }
+}
+
+impl<T> IndexMut<usize> for Vec4<T> {
+    fn index_mut(&mut self, index: usize) -> &mut Self::Output {
+        match index {
+            0 => return &mut self.x,
+            1 => return &mut self.y,
+            2 => return &mut self.z,
+            3 => return &mut self.w,
+            _ => panic!("index out of bounds: Vec4 has 4 components but index is {}", index),
         }
     }
 }
@@ -434,7 +494,7 @@ impl<T: Neg<Output = T>> Neg for Vec4<T> {
 }
 
 // T -> Vec4<T>
-impl<T: Copy> From<T> for Vec4<T>{
+impl<T: Copy> From<T> for Vec4<T> {
     fn from(v: T) -> Self {
         return Self::new(v, v, v, v)
     }

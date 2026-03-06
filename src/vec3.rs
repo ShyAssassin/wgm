@@ -1,7 +1,10 @@
+use core::fmt;
+use crate::units::Rad;
 use super::{Vec2, Vec4};
-use std::ops::{Add, Sub, Mul, Div, Neg};
-use num_traits::{Float, Signed, One, Zero};
-use std::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
+use core::ops::{Index, IndexMut};
+use core::ops::{Add, Sub, Mul, Div, Neg};
+use core::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
+use num_traits::{Float, NumCast, Signed, One, Zero, float::FloatCore};
 
 #[repr(C)]
 #[derive(Debug)]
@@ -15,7 +18,7 @@ pub struct Vec3<T> {
 }
 
 impl<T> Vec3<T> {
-    /// Create a new `Vec2<T>` from the given x, y and z values.
+    /// Create a new `Vec3<T>` from the given x, y and z values.
     pub const fn new(x: T, y: T, z: T) -> Self {
         return Self { x, y, z }
     }
@@ -90,10 +93,14 @@ impl<T> Vec3<T> {
         return (self - other).length_squared()
     }
 
-    /// Normalize `self` within a range of 0 to 1.
+    /// Normalize `self` to unit length.
     pub fn normalize(self) -> Self
     where T: Float {
-        return self / self.length()
+        let len = self.length();
+        if len.is_zero() {
+            return self
+        }
+        return self / len
     }
 
     /// Normalize `self` within a range of `lower` and `upper`.
@@ -108,18 +115,6 @@ impl<T> Vec3<T> {
         return (self.x * rhs.x) + (self.y * rhs.y) + (self.z * rhs.z)
     }
 
-    /// Compute the angle between `self` and `other`.
-    pub fn angle_between(self, other: Vec3<T>) -> T
-    where T: Float {
-        return (self.dot(other) / (self.length() * other.length())).acos()
-    }
-
-    /// Fused multiply-add. Computes `(self * a) + b`
-    pub fn mul_add(self, a: Vec3<T>, b: Vec3<T>) -> Self
-    where T: Copy + Mul<Output = T> + Add<Output = T> {
-        return Self::new(self.x * a.x + b.x, self.y * a.y + b.y, self.z * a.z + b.z)
-    }
-
     /// Compute the cross product of `self` and `rhs`.
     pub fn cross(self, rhs: Vec3<T>) -> Vec3<T>
     where T: Copy + Mul<Output = T> + Sub<Output = T> {
@@ -130,13 +125,29 @@ impl<T> Vec3<T> {
         }
     }
 
+    /// Compute the angle between `self` and `other`, returned as [`Rad<T>`].
+    pub fn angle_between(self, other: Vec3<T>) -> Rad<T>
+    where T: Float {
+        let denom = (self.length_squared() * other.length_squared()).sqrt();
+        if denom.is_zero() {
+            return Rad(T::zero())
+        }
+        return Rad((self.dot(other) / denom).acos())
+    }
+
+    /// Fused multiply-add. Computes `(self * a) + b` element-wise.
+    pub fn mul_add(self, a: Vec3<T>, b: Vec3<T>) -> Self
+    where T: Copy + Mul<Output = T> + Add<Output = T> {
+        return Self::new(self.x * a.x + b.x, self.y * a.y + b.y, self.z * a.z + b.z)
+    }
+
     /// Linearly interpolate between `self` and `other` by `t`.
     pub fn lerp(self, other: Vec3<T>, t: T) -> Self
     where T: Copy + One + Sub<Output = T> + Add<Output = T> + Mul<Output = T> {
         return self * (T::one() - t) + other * t
     }
 
-    /// Return the minimum of `self` and `other`.
+    /// Return the component-wise minimum of `self` and `other`.
     pub fn min(self, other: Vec3<T>) -> Self
     where T: PartialOrd + Copy {
         return Self {
@@ -146,7 +157,7 @@ impl<T> Vec3<T> {
         }
     }
 
-    /// Return the maximum of `self` and `other`.
+    /// Return the component-wise maximum of `self` and `other`.
     pub fn max(self, other: Vec3<T>) -> Self
     where T: PartialOrd + Copy {
         return Self {
@@ -156,7 +167,7 @@ impl<T> Vec3<T> {
         }
     }
 
-    /// Clamp `self` between `min` and `max`.
+    /// Clamp `self` between `min` and `max` component-wise.
     pub fn clamp(self, min: Vec3<T>, max: Vec3<T>) -> Self
     where T: PartialOrd + Copy {
         return self.max(min).min(max)
@@ -176,49 +187,55 @@ impl<T> Vec3<T> {
 
     /// Returns a vector with the reciprocal of each component.
     pub fn recip(self) -> Self
-    where T: Float {
+    where T: FloatCore {
         return Self::new(self.x.recip(), self.y.recip(), self.z.recip())
     }
 
     /// Returns a vector with the floor of each component.
     pub fn floor(self) -> Self
-    where T: Float {
+    where T: FloatCore {
         return Self::new(self.x.floor(), self.y.floor(), self.z.floor())
     }
 
     /// Returns a vector with the ceil of each component.
     pub fn ceil(self) -> Self
-    where T: Float {
+    where T: FloatCore {
         return Self::new(self.x.ceil(), self.y.ceil(), self.z.ceil())
     }
 
     /// Returns a vector with the round of each component.
     pub fn round(self) -> Self
-    where T: Float {
+    where T: FloatCore {
         return Self::new(self.x.round(), self.y.round(), self.z.round())
     }
 
     /// Returns a vector with the fractional part of each component.
     pub fn fract(self) -> Self
-    where T: Float {
+    where T: FloatCore {
         return Self::new(self.x.fract(), self.y.fract(), self.z.fract())
+    }
+
+    /// Returns a vector with each component raised to the given power.
+    pub fn powf(self, n: T) -> Self
+    where T: Float {
+        return Self::new(self.x.powf(n), self.y.powf(n), self.z.powf(n))
     }
 
     /// Returns true if any component is NaN.
     pub fn is_nan(self) -> bool
-    where T: Float {
+    where T: FloatCore {
         return self.x.is_nan() || self.y.is_nan() || self.z.is_nan()
     }
 
     /// Returns true if all components are finite.
     pub fn is_finite(self) -> bool
-    where T: Float {
+    where T: FloatCore {
         return self.x.is_finite() && self.y.is_finite() && self.z.is_finite()
     }
 
     /// Returns true if any component is infinite.
     pub fn is_infinite(self) -> bool
-    where T: Float {
+    where T: FloatCore {
         return self.x.is_infinite() || self.y.is_infinite() || self.z.is_infinite()
     }
 
@@ -266,18 +283,59 @@ impl<T> Vec3<T> {
 
     /// Reflects the vector about a normal.
     pub fn reflect(self, normal: Vec3<T>) -> Self
-    where T: Copy + From<f32> + Mul<Output = T> + Sub<Output = T> + Add<Output = T> {
-        return self - normal * (T::from(2.0) * self.dot(normal))
+    where T: Copy + NumCast + Mul<Output = T> + Add<Output = T> + Sub<Output = T> {
+        let two: T = NumCast::from(2.0f64).unwrap();
+        return self - normal * (two * self.dot(normal))
     }
 
     /// Projects this vector onto another.
     pub fn project_onto(self, other: Vec3<T>) -> Self
-    where T: Copy + Zero + PartialEq + Mul<Output = T> + Div<Output = T> + Add<Output = T> {
+    where T: Copy + Mul<Output = T> + Add<Output = T> + Div<Output = T> + Zero + PartialEq {
         let denom = other.length_squared();
         if denom.is_zero() {
             return Self::zero()
-        } else {
-            return other * (self.dot(other) / denom)
+        }
+        return other * (self.dot(other) / denom)
+    }
+
+    /// Rejects this vector from another (component perpendicular to `other`).
+    pub fn reject_from(self, other: Vec3<T>) -> Self
+    where T: Copy + Mul<Output = T> + Add<Output = T> + Sub<Output = T> + Div<Output = T> + Zero + PartialEq {
+        return self - self.project_onto(other)
+    }
+
+    /// Converts this vector to an array.
+    pub fn to_array(self) -> [T; 3] {
+        return [self.x, self.y, self.z]
+    }
+}
+
+impl<T: fmt::Display> fmt::Display for Vec3<T> {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        return write!(f, "Vec3({}, {}, {})", self.x, self.y, self.z)
+    }
+}
+
+impl<T> Index<usize> for Vec3<T> {
+    type Output = T;
+
+    fn index(&self, index: usize) -> &Self::Output {
+        match index {
+            0 => return &self.x,
+            1 => return &self.y,
+            2 => return &self.z,
+            _ => panic!("index out of bounds: Vec3 has 3 components but index is {}", index),
+        }
+    }
+}
+
+impl<T> IndexMut<usize> for Vec3<T> {
+    fn index_mut(&mut self, index: usize) -> &mut Self::Output {
+        match index {
+            0 => return &mut self.x,
+            1 => return &mut self.y,
+            2 => return &mut self.z,
+            _ => panic!("index out of bounds: Vec3 has 3 components but index is {}", index),
         }
     }
 }
@@ -436,7 +494,7 @@ impl<T: Neg<Output = T>> Neg for Vec3<T> {
 }
 
 // T -> Vec3<T>
-impl<T: Copy> From<T> for Vec3<T>{
+impl<T: Copy> From<T> for Vec3<T> {
     fn from(v: T) -> Self {
         return Self::new(v, v, v)
     }

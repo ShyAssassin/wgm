@@ -1,108 +1,133 @@
+use core::fmt;
 use super::{Deg, Rad};
-use num_traits::Float;
-use std::f64::consts::PI;
-use std::ops::{Add, Sub, Mul, Div};
-use std::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
+use num_traits::{Float, FloatConst};
+use core::ops::{Add, Sub, Mul, Div, Neg};
+use core::ops::{AddAssign, SubAssign, MulAssign, DivAssign};
 
-#[repr(C)]
-#[derive(Debug)]
-#[derive(Copy, Clone)]
-#[derive(PartialEq, Eq, Default)]
-/// A angle in terms of full rotations.
-pub struct Tau<T: Float>(T);
+/// An angle in turns (tau). One full turn = 1.0 = 2π radians = 360°.
+#[repr(transparent)]
+#[derive(Debug, Copy, Clone, PartialEq, PartialOrd, Default)]
+pub struct Tau<T>(pub T);
 
-impl<T: Float> Tau<T> {
+impl<T> Tau<T> {
     /// Create a new `Tau<T>` from the given value.
-    pub const fn new(value: T) -> Self {
-        return Self(value)
+    pub fn new(value: T) -> Self {
+        return Tau(value)
     }
 
-    /// Get the inner value `T` of `Tau<T>`.
-    pub const fn inner(&self) -> T {
+    /// Returns the inner value.
+    pub fn inner(self) -> T {
         return self.0
     }
 
-    /// Convert a `Deg<T>` to a `Tau<T>`.
-    pub fn from_deg(deg: Deg<T>) -> Self {
-        return Self::new(deg.inner() / T::from(360).unwrap())
+    /// Converts this angle from turns to radians.
+    pub fn to_rad(self) -> Rad<T>
+    where T: Float + FloatConst {
+        let tau = T::TAU();
+        return Rad::new(self.0 * tau)
     }
 
-    /// Convert a `Tau<T>` to a `Deg<T>`.
-    pub fn to_deg(self) -> Deg<T> {
-        return Deg::new(self.inner() * T::from(360).unwrap())
-    }
-
-    /// Convert a `Rad<T>` to a `Tau<T>`.
-    pub fn from_rad(rad: Rad<T>) -> Self {
-        return Self::new(rad.inner() / T::from(2.0 * PI).unwrap())
-    }
-
-    /// Convert a `Tau<T>` to a `Rad<T>`.
-    pub fn to_rad(self) -> Rad<T> {
-        return Rad::new(self.inner() * T::from(2.0 * PI).unwrap())
+    /// Converts this angle from turns to degrees.
+    pub fn to_deg(self) -> Deg<T>
+    where T: Float + FloatConst {
+        let full = T::from(360.0).unwrap();
+        return Deg::new(self.0 * full)
     }
 }
 
-// Tau<T> * Tau<T>
-impl<T: Float> Mul<Tau<T>> for Tau<T> {
+impl<T: fmt::Display> fmt::Display for Tau<T> {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        return write!(f, "{}τ", self.0)
+    }
+}
+
+// Tau + Tau
+impl<T: Add<Output = T>> Add for Tau<T> {
     type Output = Tau<T>;
-
-    fn mul(self, rhs: Tau<T>) -> Self::Output {
-        return Tau::new(self.0 * rhs.0)
-    }
-}
-
-// Tau<T> *= Tau<T>
-impl<T: Float> MulAssign<Tau<T>> for Tau<T> {
-    fn mul_assign(&mut self, rhs: Tau<T>) {
-        self.0 = self.0 * rhs.0
-    }
-}
-
-// Tau<T> / Tau<T>
-impl<T: Float> Div<Tau<T>> for Tau<T> {
-    type Output = Tau<T>;
-
-    fn div(self, rhs: Tau<T>) -> Self::Output {
-        return Tau::new(self.0 / rhs.0)
-    }
-}
-
-// Tau<T> /= Tau<T>
-impl<T: Float> DivAssign<Tau<T>> for Tau<T> {
-    fn div_assign(&mut self, rhs: Tau<T>) {
-        self.0 = self.0 / rhs.0;
-    }
-}
-
-// Tau<T> + Tau<T>
-impl<T: Float> Add<Tau<T>> for Tau<T> {
-    type Output = Tau<T>;
-
     fn add(self, rhs: Tau<T>) -> Self::Output {
-        return Tau::new(self.0 + rhs.0)
+        return Tau(self.0 + rhs.0)
     }
 }
 
-// Tau<T> += Tau<T>
-impl<T: Float> AddAssign<Tau<T>> for Tau<T> {
+// Tau += Tau
+impl<T: Add<Output = T> + Copy> AddAssign for Tau<T> {
     fn add_assign(&mut self, rhs: Tau<T>) {
         self.0 = self.0 + rhs.0;
     }
 }
 
-// Tau<T> - Tau<T>
-impl<T: Float> Sub<Tau<T>> for Tau<T> {
+// Tau - Tau
+impl<T: Sub<Output = T>> Sub for Tau<T> {
     type Output = Tau<T>;
-
     fn sub(self, rhs: Tau<T>) -> Self::Output {
-        return Tau::new(self.0 - rhs.0)
+        return Tau(self.0 - rhs.0)
     }
 }
 
-// Tau<T> -= Tau<T>
-impl<T: Float> SubAssign<Tau<T>> for Tau<T> {
+// Tau -= Tau
+impl<T: Sub<Output = T> + Copy> SubAssign for Tau<T> {
     fn sub_assign(&mut self, rhs: Tau<T>) {
         self.0 = self.0 - rhs.0;
+    }
+}
+
+// Tau * T
+impl<T: Mul<Output = T>> Mul<T> for Tau<T> {
+    type Output = Tau<T>;
+    fn mul(self, rhs: T) -> Self::Output {
+        return Tau(self.0 * rhs)
+    }
+}
+
+// Tau *= T
+impl<T: Mul<Output = T> + Copy> MulAssign<T> for Tau<T> {
+    fn mul_assign(&mut self, rhs: T) {
+        self.0 = self.0 * rhs;
+    }
+}
+
+// Tau / T
+impl<T: Div<Output = T>> Div<T> for Tau<T> {
+    type Output = Tau<T>;
+    fn div(self, rhs: T) -> Self::Output {
+        return Tau(self.0 / rhs)
+    }
+}
+
+// Tau /= T
+impl<T: Div<Output = T> + Copy> DivAssign<T> for Tau<T> {
+    fn div_assign(&mut self, rhs: T) {
+        self.0 = self.0 / rhs;
+    }
+}
+
+// -Tau
+impl<T: Neg<Output = T>> Neg for Tau<T> {
+    type Output = Tau<T>;
+    fn neg(self) -> Self::Output {
+        return Tau(-self.0)
+    }
+}
+
+// From<Rad<T>> for Tau<T>
+impl<T: Float + FloatConst> From<Rad<T>> for Tau<T> {
+    fn from(rad: Rad<T>) -> Self {
+        let tau = T::TAU();
+        return Tau(rad.inner() / tau)
+    }
+}
+
+// From<Deg<T>> for Tau<T>
+impl<T: Float + FloatConst> From<Deg<T>> for Tau<T> {
+    fn from(deg: Deg<T>) -> Self {
+        let full = T::from(360.0).unwrap();
+        return Tau(deg.inner() / full)
+    }
+}
+
+// From<Tau<T>> for Deg<T>
+impl<T: Float + FloatConst> From<Tau<T>> for Deg<T> {
+    fn from(tau: Tau<T>) -> Self {
+        return tau.to_deg()
     }
 }
